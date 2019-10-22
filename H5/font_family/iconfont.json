@@ -1,0 +1,23 @@
+{
+  "id": "1465006",
+  "name": "H5",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "5896808",
+      "name": "地图-地标",
+      "font_class": "ditu-dibiao",
+      "unicode": "ec3f",
+      "unicode_decimal": 60479
+    },
+    {
+      "icon_id": "9557798",
+      "name": "向右箭头",
+      "font_class": "xiangyoujiantou",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    }
+  ]
+}

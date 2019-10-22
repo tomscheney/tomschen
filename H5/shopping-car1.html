@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <title>mine cart</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__css/reset.css">
+    <script src="js/jquery-3.3.1.js"></script>
+    <!-- <script src="__STATIC__js/resp.js"></script> -->
+    <style>
+    .content {
+        width: 100%;
+    }
+    /* 商品详情样式 */
+    
+    ul {
+        width: 100%;
+		list-style: none;
+    }
+    
+    ul li {
+        width: 100%;
+        float: left;
+        border-bottom: 0.05rem solid #ddd;
+        padding: 0.5rem 0;
+    }
+ 
+      ul>li>p:nth-of-type(1){
+        display: block;
+        width: 0.8rem;
+        height: 0.8rem;
+        border-radius: 50%;
+        float: left;
+        margin: 1.0rem 0 0 0.5rem;
+        /* background:url('__STATIC__images/selectInput.png') no-repeat; */
+        background-size:100% 100%;
+    }
+      ul>li>p.checkselected {
+        display: block;
+        width: 0.8rem;
+        height: 0.8rem;
+        border-radius: 50%;
+        float: left;
+        margin: 1.0rem 0 0 0.5rem;
+        /* background:url('__STATIC__images/selectedred.png') no-repeat; */
+        background-size:100% 100%;
+    }
+    
+    ul li img {
+        width: 35%;
+        height: auto;
+        display: block;
+        float: left;
+        margin: 0.25rem 0.3rem;
+    }
+    
+    .info {
+        width: 60%;
+        height: 100%;
+        float: left;
+        position: relative;
+    }
+    
+    .info .infoTitle {
+        color: #333;
+        font-size: 0.6rem;
+    }
+    
+    .info .infoPrice {
+        color: #e64340;
+        font-size: 0.6rem;
+    }
+    
+    .reduce,
+    .add {
+        display: inline-block;
+        width: 0.8rem;
+        height: 0.8rem;
+        background-color: #ccc;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 0.8rem;
+        margin: 0 0.2rem;
+    }
+    
+    .num {
+        display: inline-block;
+        color: #666;
+    }
+    
+    .infoNum input[type="text"] {
+        display: inline-block;
+    }
+    
+    .info .detail {
+        position: absolute;
+        right: 0;
+        bottom: 0.5rem;
+        display:block;
+        width:0.6rem;
+        height:0.7rem;
+        /* background:url('__STATIC__images/delete.png') no-repeat; */
+        background-size:100% 100%;
+    }
+    /*底部结算样式*/
+    
+    .total {
+        clear: both;
+        width: 100%;
+        height: 2.0rem;
+        line-height: 2.0rem;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        border-top: 0.05rem solid #ddd;
+        font-size: 0.6rem;
+    }
+    
+    .total p:nth-of-type(1) {
+        width: 48%;
+        height: 100%;
+        float: left;
+        padding-left: 2%;
+    }
+    
+    .total p:nth-of-type(1)>.checkAll {
+        display: block;
+        width: 0.8rem;
+        height: 0.8rem;
+        /* background:url('__STATIC__images/selectInput.png') no-repeat; */
+        background-size:100% 100%;
+        float: left;
+        margin: 0.6rem 0.3rem 0 0;
+        border-radius:50%;
+    }
+     .total p:nth-of-type(1)>.checkRed {
+        display: block;
+        width: 0.8rem;
+        height: 0.8rem;
+        /* background:url('__STATIC__images/selectedred.png') no-repeat; */
+        background-size:100% 100%;
+        float: left;
+        margin: 0.6rem 0.3rem 0 0;
+        border-radius:50%;
+    }
+    .total p:nth-of-type(2) {
+        width: 30%;
+        height: 100%;
+        float: left;
+        text-align: center;
+    }
+    
+    .total a {
+        float: left;
+        display: block;
+        width: 20%;
+        height: 100%;
+        color: #fff;
+        background-color: #e64340;
+        text-align: center;
+    }   
+    </style>
+</head>
+ 
+<body>
+    <div class="content">
+        <ul>
+            <volist name="data" id="vo">
+                <li>
+                    <!-- <input type="checkbox" name="" class="check" id=""> -->
+                    <p class="check" goodsid="{$vo.goods_idx}"></p>
+                    <!-- <img src="{$vo.goods_images}" alt=""> -->
+					<img src="img/qing4%20(3).JPG" >
+                    <div class="info">
+                       <!-- <p class="infoTitle">{$vo.goods_title}</p> -->
+					    <p class="infoTitle">芷贤斋 小心肝小青柑 产地福建福建</p>
+                        <p class="infoPrice">￥<span class="singleprice">{$vo.goods_price}</span></p>
+                       <!-- <p class="infoNum">共<span class="reduce">-</span><span class="num">{$vo.goods_num}</span> -->
+							<p class="infoNum">共<span class="reduce">-</span><span class="num">2</span>
+                            <input type="hidden" name="" value=""><span class="add">+</span>件商品</p>
+                        <a class="detail" goodsid="{$vo.goods_idx}" href="javascript:;"></a>
+                    </div>
+                </li>
+            </volist>
+        </ul>
+        <div class="total">
+            <p>
+                <label for="checkAll" class="checkAll"></label>
+                <input id="checkAll" type="checkbox" name="" style="display:none;"><span>全选</span></p>
+                <p class="allprice">合计:￥<span>0.00</span></p>
+            <a href="javascript:;" id='settlement'> 结算</a>
+        </div>
+    </div>
+</body>
+<script>
+    $(function(){
+       //减数量与价格
+        $(".reduce").on("click",function(){
+            var numx=$(this).siblings(".num").text();
+            numx--;
+            if(numx<=1){
+                $(this).siblings(".num").text(1);
+            }else{
+                $(this).siblings(".num").text(numx);
+            }           
+             if($(this).parents(".info").siblings("p").hasClass('checkselected')){
+                totalprice()
+            }
+        })
+      //加数量与价格
+        $(".add").on("click",function(){
+            var numx=$(this).siblings(".num").text();
+            numx++;
+            $(this).siblings(".num").text(numx);          
+            if($(this).parents(".info").siblings("p").hasClass('checkselected')){
+                totalprice()
+            }
+        })
+        var checked=$(".check");
+        function totalprice(){
+            total=0;
+            $.each(checked,function(index,value){ 
+                if($(this).hasClass('checkselected')){                   
+                    var _singleprice=$(this).siblings(".info").find(".singleprice").text();
+                    var _number=$(this).siblings(".info").find(".num").text();
+                    total+=parseInt(_number)*parseFloat(_singleprice);     
+                    $(".allprice").find("span").text(total.toFixed(2));
+                }
+            })
+        }
+       //总价加减
+        var total=0;
+        $("ul li p:nth-of-type(1)").on("click",function(e){                    
+            var _this=$(this);      
+             if(!_this.hasClass('checkselected')){                
+                 _this.addClass('checkselected');                             
+                var _singleprice=_this.siblings(".info").find(".singleprice").text();
+                var _number=_this.siblings(".info").find(".num").text();
+                total+=parseInt(_number)*parseFloat(_singleprice);               
+                $(".allprice").find("span").text(total.toFixed(2));               
+            }else{                
+                 _this.removeClass('checkselected'); 
+                var _singleprice=_this.siblings(".info").find(".singleprice").text();
+                var _number=_this.siblings(".info").find(".num").text();
+                total-=parseInt(_number)*parseFloat(_singleprice); 
+                $(".allprice").find("span").text(total.toFixed(2));  
+                if(total<=0){                    
+                     total=0;                  
+                     $(".allprice").find("span").text(total.toFixed(2)); 
+                }               
+                              
+            }
+        })
+        全选反选
+        var checkall=false; 
+        $(".checkAll").on("click",function(){
+            if(checkall){               
+                 $(this).addClass('checkAll').removeClass('checkRed');
+                checked.removeClass("checkselected");
+                total=0;
+                $(".allprice").find("span").text(total.toFixed(2));
+                checkall=false;
+            }else{                
+                $(this).addClass('checkRed').removeClass('checkAll');
+                checked.addClass("checkselected");               
+                totalprice()
+                checkall=true;
+            }
+        })
+    })
+ <script>
+     var username = "chengxi";
+     var password = "123456";
+     var nickname = "成兮";
+     var age = 20;
+     //定义一个类
+     function person(username,password,nickname,age){
+         this.username = username;
+         this.password = password;
+         this.nickname = nickname;
+         this.age = age;
+     }
+     //创建一个类的对象
+     var myobj = new person(username,password,nickname,age);
+     //将对象转换成字符串来保存到sessionStorage中
+     sessionStorage.setItem("myobj",JSON.stringify(myobj));
+     //读取数据时要将其转换成JSON格式数据
+     var obj = JSON.parse(sessionStorage.getItem("myobj"));
+     console.log(obj.username);
+ </script>
+</html>
