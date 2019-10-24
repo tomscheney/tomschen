@@ -4,8 +4,8 @@ import Utils from '../../utils/utils';
 const Virtual = {
   update(force) {
     const swiper = this;
-    const { slidesPerView, slidesPerGroup, centeredSlides } = swiper.params;
-    const { addSlidesBefore, addSlidesAfter } = swiper.params.virtual;
+    const {slidesPerView, slidesPerGroup, centeredSlides} = swiper.params;
+    const {addSlidesBefore, addSlidesAfter} = swiper.params.virtual;
     const {
       from: previousFrom,
       to: previousTo,
@@ -94,12 +94,16 @@ const Virtual = {
         }
       }
     }
-    appendIndexes.forEach((index) => {
+    appendIndexes.forEach((index) = > {
       swiper.$wrapperEl.append(renderSlide(slides[index], index));
-    });
-    prependIndexes.sort((a, b) => b - a).forEach((index) => {
+  })
+    ;
+    prependIndexes.sort((a, b) = > b - a
+  ).
+    forEach((index) = > {
       swiper.$wrapperEl.prepend(renderSlide(slides[index], index));
-    });
+  })
+    ;
     swiper.$wrapperEl.children('.swiper-slide').css(offsetProp, `${offset}px`);
     onRendered();
   },
@@ -145,14 +149,15 @@ const Virtual = {
     if (swiper.params.virtual.cache) {
       const cache = swiper.virtual.cache;
       const newCache = {};
-      Object.keys(cache).forEach((cachedIndex) => {
+      Object.keys(cache).forEach((cachedIndex) = > {
         const $cachedEl = cache[cachedIndex];
-        const cachedElIndex = $cachedEl.attr('data-swiper-slide-index');
-        if (cachedElIndex) {
-          $cachedEl.attr('data-swiper-slide-index', parseInt(cachedElIndex, 10) + 1);
-        }
-        newCache[parseInt(cachedIndex, 10) + numberOfNewSlides] = $cachedEl;
-      });
+      const cachedElIndex = $cachedEl.attr('data-swiper-slide-index');
+      if (cachedElIndex) {
+        $cachedEl.attr('data-swiper-slide-index', parseInt(cachedElIndex, 10) + 1);
+      }
+      newCache[parseInt(cachedIndex, 10) + numberOfNewSlides] = $cachedEl;
+    })
+      ;
       swiper.virtual.cache = newCache;
     }
     swiper.virtual.update(true);

@@ -62,7 +62,7 @@ const a11y = {
     const swiper = this;
 
     if (swiper.params.loop) return;
-    const { $nextEl, $prevEl } = swiper.navigation;
+    const {$nextEl, $prevEl} = swiper.navigation;
 
     if ($prevEl && $prevEl.length > 0) {
       if (swiper.isBeginning) {
@@ -83,12 +83,13 @@ const a11y = {
     const swiper = this;
     const params = swiper.params.a11y;
     if (swiper.pagination && swiper.params.pagination.clickable && swiper.pagination.bullets && swiper.pagination.bullets.length) {
-      swiper.pagination.bullets.each((bulletIndex, bulletEl) => {
+      swiper.pagination.bullets.each((bulletIndex, bulletEl) = > {
         const $bulletEl = $(bulletEl);
-        swiper.a11y.makeElFocusable($bulletEl);
-        swiper.a11y.addElRole($bulletEl, 'button');
-        swiper.a11y.addElLabel($bulletEl, params.paginationBulletMessage.replace(/{{index}}/, $bulletEl.index() + 1));
-      });
+      swiper.a11y.makeElFocusable($bulletEl);
+      swiper.a11y.addElRole($bulletEl, 'button');
+      swiper.a11y.addElLabel($bulletEl, params.paginationBulletMessage.replace(/{{index}}/, $bulletEl.index() + 1));
+    })
+      ;
     }
   },
   init() {
@@ -169,9 +170,10 @@ export default {
         liveRegion: $(`<span class="${swiper.params.a11y.notificationClass}" aria-live="assertive" aria-atomic="true"></span>`),
       },
     });
-    Object.keys(a11y).forEach((methodName) => {
+    Object.keys(a11y).forEach((methodName) = > {
       swiper.a11y[methodName] = a11y[methodName].bind(swiper);
-    });
+  })
+    ;
   },
   on: {
     init() {

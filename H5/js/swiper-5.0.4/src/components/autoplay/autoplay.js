@@ -10,36 +10,43 @@ const Autoplay = {
       delay = $activeSlideEl.attr('data-swiper-autoplay') || swiper.params.autoplay.delay;
     }
     clearTimeout(swiper.autoplay.timeout);
-    swiper.autoplay.timeout = Utils.nextTick(() => {
-      if (swiper.params.autoplay.reverseDirection) {
-        if (swiper.params.loop) {
-          swiper.loopFix();
-          swiper.slidePrev(swiper.params.speed, true, true);
-          swiper.emit('autoplay');
-        } else if (!swiper.isBeginning) {
-          swiper.slidePrev(swiper.params.speed, true, true);
-          swiper.emit('autoplay');
-        } else if (!swiper.params.autoplay.stopOnLastSlide) {
-          swiper.slideTo(swiper.slides.length - 1, swiper.params.speed, true, true);
-          swiper.emit('autoplay');
-        } else {
-          swiper.autoplay.stop();
-        }
-      } else if (swiper.params.loop) {
+    swiper.autoplay.timeout = Utils.nextTick(() = > {
+      if(swiper.params.autoplay.reverseDirection
+  )
+    {
+      if (swiper.params.loop) {
         swiper.loopFix();
-        swiper.slideNext(swiper.params.speed, true, true);
+        swiper.slidePrev(swiper.params.speed, true, true);
         swiper.emit('autoplay');
-      } else if (!swiper.isEnd) {
-        swiper.slideNext(swiper.params.speed, true, true);
+      } else if (!swiper.isBeginning) {
+        swiper.slidePrev(swiper.params.speed, true, true);
         swiper.emit('autoplay');
       } else if (!swiper.params.autoplay.stopOnLastSlide) {
-        swiper.slideTo(0, swiper.params.speed, true, true);
+        swiper.slideTo(swiper.slides.length - 1, swiper.params.speed, true, true);
         swiper.emit('autoplay');
       } else {
         swiper.autoplay.stop();
       }
-      if (swiper.params.cssMode && swiper.autoplay.running) swiper.autoplay.run();
-    }, delay);
+    }
+  else
+    if (swiper.params.loop) {
+      swiper.loopFix();
+      swiper.slideNext(swiper.params.speed, true, true);
+      swiper.emit('autoplay');
+    } else if (!swiper.isEnd) {
+      swiper.slideNext(swiper.params.speed, true, true);
+      swiper.emit('autoplay');
+    } else if (!swiper.params.autoplay.stopOnLastSlide) {
+      swiper.slideTo(0, swiper.params.speed, true, true);
+      swiper.emit('autoplay');
+    } else {
+      swiper.autoplay.stop();
+    }
+    if (swiper.params.cssMode && swiper.autoplay.running) swiper.autoplay.run();
+  },
+    delay
+  )
+    ;
   },
   start() {
     const swiper = this;

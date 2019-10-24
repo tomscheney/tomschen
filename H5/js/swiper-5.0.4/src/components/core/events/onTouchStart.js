@@ -1,11 +1,11 @@
-import { window, document } from 'ssr-window';
+import {window, document} from 'ssr-window';
 import $ from '../../../utils/dom';
 import Utils from '../../../utils/utils';
 
 export default function (event) {
   const swiper = this;
   const data = swiper.touchEventsData;
-  const { params, touches } = swiper;
+  const {params, touches} = swiper;
 
   if (swiper.animating && params.preventInteractionOnTransition) {
     return;

@@ -11,7 +11,7 @@ const Zoom = {
     const y1 = e.targetTouches[0].pageY;
     const x2 = e.targetTouches[1].pageX;
     const y2 = e.targetTouches[1].pageY;
-    const distance = Math.sqrt(((x2 - x1) ** 2) + ((y2 - y1) ** 2));
+    const distance = Math.sqrt(((x2 - x1) * * 2) + ((y2 - y1) * * 2));
     return distance;
   },
   // Events
@@ -19,7 +19,7 @@ const Zoom = {
     const swiper = this;
     const params = swiper.params.zoom;
     const zoom = swiper.zoom;
-    const { gesture } = zoom;
+    const {gesture} = zoom;
     zoom.fakeGestureTouched = false;
     zoom.fakeGestureMoved = false;
     if (!Support.gestures) {
@@ -47,7 +47,7 @@ const Zoom = {
     const swiper = this;
     const params = swiper.params.zoom;
     const zoom = swiper.zoom;
-    const { gesture } = zoom;
+    const {gesture} = zoom;
     if (!Support.gestures) {
       if (e.type !== 'touchmove' || (e.type === 'touchmove' && e.targetTouches.length < 2)) {
         return;
@@ -62,10 +62,10 @@ const Zoom = {
       zoom.scale = (gesture.scaleMove / gesture.scaleStart) * zoom.currentScale;
     }
     if (zoom.scale > gesture.maxRatio) {
-      zoom.scale = (gesture.maxRatio - 1) + (((zoom.scale - gesture.maxRatio) + 1) ** 0.5);
+      zoom.scale = (gesture.maxRatio - 1) + (((zoom.scale - gesture.maxRatio) + 1) * * 0.5);
     }
     if (zoom.scale < params.minRatio) {
-      zoom.scale = (params.minRatio + 1) - (((params.minRatio - zoom.scale) + 1) ** 0.5);
+      zoom.scale = (params.minRatio + 1) - (((params.minRatio - zoom.scale) + 1) * * 0.5);
     }
     gesture.$imageEl.transform(`translate3d(0,0,0) scale(${zoom.scale})`);
   },
@@ -73,7 +73,7 @@ const Zoom = {
     const swiper = this;
     const params = swiper.params.zoom;
     const zoom = swiper.zoom;
-    const { gesture } = zoom;
+    const {gesture} = zoom;
     if (!Support.gestures) {
       if (!zoom.fakeGestureTouched || !zoom.fakeGestureMoved) {
         return;
@@ -94,7 +94,7 @@ const Zoom = {
   onTouchStart(e) {
     const swiper = this;
     const zoom = swiper.zoom;
-    const { gesture, image } = zoom;
+    const {gesture, image} = zoom;
     if (!gesture.$imageEl || gesture.$imageEl.length === 0) return;
     if (image.isTouched) return;
     if (Device.android) e.preventDefault();
@@ -105,7 +105,7 @@ const Zoom = {
   onTouchMove(e) {
     const swiper = this;
     const zoom = swiper.zoom;
-    const { gesture, image, velocity } = zoom;
+    const {gesture, image, velocity} = zoom;
     if (!gesture.$imageEl || gesture.$imageEl.length === 0) return;
     swiper.allowClick = false;
     if (!image.isTouched || !gesture.$slideEl) return;
@@ -147,7 +147,8 @@ const Zoom = {
       ) {
         image.isTouched = false;
         return;
-      } if (
+      }
+      if (
         !swiper.isHorizontal()
         && (
           (Math.floor(image.minY) === Math.floor(image.startY) && image.touchesCurrent.y < image.touchesStart.y)
@@ -166,17 +167,17 @@ const Zoom = {
     image.currentY = (image.touchesCurrent.y - image.touchesStart.y) + image.startY;
 
     if (image.currentX < image.minX) {
-      image.currentX = (image.minX + 1) - (((image.minX - image.currentX) + 1) ** 0.8);
+      image.currentX = (image.minX + 1) - (((image.minX - image.currentX) + 1) * * 0.8);
     }
     if (image.currentX > image.maxX) {
-      image.currentX = (image.maxX - 1) + (((image.currentX - image.maxX) + 1) ** 0.8);
+      image.currentX = (image.maxX - 1) + (((image.currentX - image.maxX) + 1) * * 0.8);
     }
 
     if (image.currentY < image.minY) {
-      image.currentY = (image.minY + 1) - (((image.minY - image.currentY) + 1) ** 0.8);
+      image.currentY = (image.minY + 1) - (((image.minY - image.currentY) + 1) * * 0.8);
     }
     if (image.currentY > image.maxY) {
-      image.currentY = (image.maxY - 1) + (((image.currentY - image.maxY) + 1) ** 0.8);
+      image.currentY = (image.maxY - 1) + (((image.currentY - image.maxY) + 1) * * 0.8);
     }
 
     // Velocity
@@ -196,7 +197,7 @@ const Zoom = {
   onTouchEnd() {
     const swiper = this;
     const zoom = swiper.zoom;
-    const { gesture, image, velocity } = zoom;
+    const {gesture, image, velocity} = zoom;
     if (!gesture.$imageEl || gesture.$imageEl.length === 0) return;
     if (!image.isTouched || !image.isMoved) {
       image.isTouched = false;
@@ -235,7 +236,7 @@ const Zoom = {
   onTransitionEnd() {
     const swiper = this;
     const zoom = swiper.zoom;
-    const { gesture } = zoom;
+    const {gesture} = zoom;
     if (gesture.$slideEl && swiper.previousIndex !== swiper.activeIndex) {
       gesture.$imageEl.transform('translate3d(0,0,0) scale(1)');
       gesture.$imageWrapEl.transform('translate3d(0,0,0)');
@@ -266,7 +267,7 @@ const Zoom = {
 
     const zoom = swiper.zoom;
     const params = swiper.params.zoom;
-    const { gesture, image } = zoom;
+    const {gesture, image} = zoom;
 
     if (!gesture.$slideEl) {
       gesture.$slideEl = swiper.clickedSlide ? $(swiper.clickedSlide) : swiper.slides.eq(swiper.activeIndex);
@@ -352,7 +353,7 @@ const Zoom = {
 
     const zoom = swiper.zoom;
     const params = swiper.params.zoom;
-    const { gesture } = zoom;
+    const {gesture} = zoom;
 
     if (!gesture.$slideEl) {
       gesture.$slideEl = swiper.clickedSlide ? $(swiper.clickedSlide) : swiper.slides.eq(swiper.activeIndex);
@@ -375,8 +376,11 @@ const Zoom = {
     if (zoom.enabled) return;
     zoom.enabled = true;
 
-    const passiveListener = swiper.touchEvents.start === 'touchstart' && Support.passiveListener && swiper.params.passiveListeners ? { passive: true, capture: false } : false;
-    const activeListenerWithCapture = Support.passiveListener ? { passive: false, capture: true } : true;
+    const passiveListener = swiper.touchEvents.start === 'touchstart' && Support.passiveListener && swiper.params.passiveListeners ? {
+      passive: true,
+      capture: false
+    } : false;
+    const activeListenerWithCapture = Support.passiveListener ? {passive: false, capture: true} : true;
 
     // Scale image
     if (Support.gestures) {
@@ -402,8 +406,11 @@ const Zoom = {
 
     swiper.zoom.enabled = false;
 
-    const passiveListener = swiper.touchEvents.start === 'touchstart' && Support.passiveListener && swiper.params.passiveListeners ? { passive: true, capture: false } : false;
-    const activeListenerWithCapture = Support.passiveListener ? { passive: false, capture: true } : true;
+    const passiveListener = swiper.touchEvents.start === 'touchstart' && Support.passiveListener && swiper.params.passiveListeners ? {
+      passive: true,
+      capture: false
+    } : false;
+    const activeListenerWithCapture = Support.passiveListener ? {passive: false, capture: true} : true;
 
     // Scale image
     if (Support.gestures) {
@@ -476,9 +483,10 @@ export default {
       },
     };
 
-    ('onGestureStart onGestureChange onGestureEnd onTouchStart onTouchMove onTouchEnd onTransitionEnd toggle enable disable in out').split(' ').forEach((methodName) => {
+    ('onGestureStart onGestureChange onGestureEnd onTouchStart onTouchMove onTouchEnd onTransitionEnd toggle enable disable in out').split(' ').forEach((methodName) = > {
       zoom[methodName] = Zoom[methodName].bind(swiper);
-    });
+  })
+    ;
     Utils.extend(swiper, {
       zoom,
     });

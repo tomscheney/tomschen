@@ -19,35 +19,44 @@ function base64Encode(file) {
   return Buffer.from(bitmap).toString('base64');
 }
 
-async function build(cb) {
+async
+
+function build(cb) {
   const env = process.env.NODE_ENV || 'development';
 
   const components = [];
-  config.components.forEach((name) => {
+  config.components.forEach((name) = > {
     const lessFilePath = `./src/components/${name}/${name}.less`;
 
-    if (fs.existsSync(lessFilePath)) {
-      components.push(name);
-    }
-  });
+  if (fs.existsSync(lessFilePath)) {
+    components.push(name);
+  }
+})
+  ;
 
   const colors = [];
 
-  Object.keys(config.colors).forEach((key) => {
+  Object.keys(config.colors).forEach((key) = > {
     colors.push(`${key} ${config.colors[key]}`);
-  });
+})
+  ;
 
   let lessContent = fs.readFileSync(path.resolve(__dirname, '../src/swiper.less'), 'utf8');
   lessContent = lessContent
-    .replace('//IMPORT_COMPONENTS', components.map((component) => `@import url('./components/${component}/${component}.less');`).join('\n'))
-    .replace('$themeColor', config.themeColor)
+    .replace('//IMPORT_COMPONENTS', components.map((component) = > `@import url('./components/${component}/${component}.less');`).join('\n')
+)
+.
+  replace('$themeColor', config.themeColor)
     .replace('$colors', colors.join(', '));
 
   let cssContent;
   try {
-    cssContent = await autoprefixer(
-      await less(lessContent, path.resolve(__dirname, '../src'))
-    );
+    cssContent = await
+    autoprefixer(
+      await
+    less(lessContent, path.resolve(__dirname, '../src'))
+  )
+    ;
   } catch (err) {
     console.log(err);
   }
@@ -63,26 +72,31 @@ async function build(cb) {
   // Copy less & scss
   const iconsFontBase64 = base64Encode('./src/icons/font/swiper-icons.woff');
 
-  glob('**/*.*', { cwd: path.resolve(__dirname, '../src') }, (err, files) => {
-    files.forEach((file, index) => {
-      if (file.indexOf('icons/') === 0) return;
-      if (file.indexOf('.js') >= 0) return;
+  glob('**/*.*', {cwd: path.resolve(__dirname, '../src')}, (err, files) = > {
+    files.forEach((file, index) = > {
+      if(file.indexOf('icons/') === 0
+)
+  return;
+  if (file.indexOf('.js') >= 0) return;
 
-      let fileContent = fse.readFileSync(path.resolve(__dirname, '../src', file));
-      if (file.indexOf('swiper.less') >= 0) {
-        fileContent = fileContent
-          .replace('swiperIconsFont()', `'${iconsFontBase64}'`)
-          .replace('$themeColor', config.themeColor)
-          .replace('$colors', colors.join(', '));
-      }
+  let fileContent = fse.readFileSync(path.resolve(__dirname, '../src', file));
+  if (file.indexOf('swiper.less') >= 0) {
+    fileContent = fileContent
+      .replace('swiperIconsFont()', `'${iconsFontBase64}'`)
+      .replace('$themeColor', config.themeColor)
+      .replace('$colors', colors.join(', '));
+  }
 
-      fse.writeFileSync(path.resolve(__dirname, '../package', file), fileContent);
-      if (index === files.length - 1) cb();
-    });
-  });
+  fse.writeFileSync(path.resolve(__dirname, '../package', file), fileContent);
+  if (index === files.length - 1) cb();
+})
+  ;
+})
+  ;
 
   // Minified
-  const minifiedContent = await cleanCSS(cssContent);
+  const minifiedContent = await
+  cleanCSS(cssContent);
 
   // Write file
   fse.writeFileSync('./package/css/swiper.min.css', `${banner}\n${minifiedContent}`);

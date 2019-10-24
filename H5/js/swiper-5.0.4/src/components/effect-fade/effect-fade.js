@@ -3,7 +3,7 @@ import Utils from '../../utils/utils';
 const Fade = {
   setTranslate() {
     const swiper = this;
-    const { slides } = swiper;
+    const {slides} = swiper;
     for (let i = 0; i < slides.length; i += 1) {
       const $slideEl = swiper.slides.eq(i);
       const offset = $slideEl[0].swiperSlideOffset;
@@ -26,20 +26,21 @@ const Fade = {
   },
   setTransition(duration) {
     const swiper = this;
-    const { slides, $wrapperEl } = swiper;
+    const {slides, $wrapperEl} = swiper;
     slides.transition(duration);
     if (swiper.params.virtualTranslate && duration !== 0) {
       let eventTriggered = false;
-      slides.transitionEnd(() => {
-        if (eventTriggered) return;
-        if (!swiper || swiper.destroyed) return;
-        eventTriggered = true;
-        swiper.animating = false;
-        const triggerEvents = ['webkitTransitionEnd', 'transitionend'];
-        for (let i = 0; i < triggerEvents.length; i += 1) {
-          $wrapperEl.trigger(triggerEvents[i]);
-        }
-      });
+      slides.transitionEnd(() = > {
+        if(eventTriggered) return;
+      if (!swiper || swiper.destroyed) return;
+      eventTriggered = true;
+      swiper.animating = false;
+      const triggerEvents = ['webkitTransitionEnd', 'transitionend'];
+      for (let i = 0; i < triggerEvents.length; i += 1) {
+        $wrapperEl.trigger(triggerEvents[i]);
+      }
+    })
+      ;
     }
   },
 };

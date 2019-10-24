@@ -1,4 +1,4 @@
-import { window, document } from 'ssr-window';
+import {window, document} from 'ssr-window';
 
 const Support = (function Support() {
   return {

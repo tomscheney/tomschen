@@ -1,6 +1,6 @@
 export default function () {
   const swiper = this;
-  const { wrapperEl } = swiper;
+  const {wrapperEl} = swiper;
   swiper.previousTranslate = swiper.translate;
   swiper.translate = swiper.isHorizontal() ? -wrapperEl.scrollLeft : -wrapperEl.scrollTop;
   // eslint-disable-next-line

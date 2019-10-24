@@ -3,7 +3,7 @@ import Utils from '../../../utils/utils';
 
 export default function () {
   const swiper = this;
-  const { params, $wrapperEl } = swiper;
+  const {params, $wrapperEl} = swiper;
 
   const slidesPerView = params.slidesPerView === 'auto' ? swiper.slidesPerViewDynamic() : params.slidesPerView;
   let slideToIndex = swiper.clickedIndex;
@@ -22,9 +22,10 @@ export default function () {
           .eq(0)
           .index();
 
-        Utils.nextTick(() => {
+        Utils.nextTick(() = > {
           swiper.slideTo(slideToIndex);
-        });
+      })
+        ;
       } else {
         swiper.slideTo(slideToIndex);
       }
@@ -35,9 +36,10 @@ export default function () {
         .eq(0)
         .index();
 
-      Utils.nextTick(() => {
+      Utils.nextTick(() = > {
         swiper.slideTo(slideToIndex);
-      });
+    })
+      ;
     } else {
       swiper.slideTo(slideToIndex);
     }

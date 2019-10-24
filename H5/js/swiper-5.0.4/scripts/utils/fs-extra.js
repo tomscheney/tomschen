@@ -16,13 +16,17 @@ const fsExtra = {
       fs.mkdirSync(dir);
       return;
     }
-    dir.split(path.sep).forEach((part, index) => {
-      if (!part) return;
-      const partialPath = dir.split(path.sep).slice(0, index + 1).join(path.sep);
-      if (!fs.existsSync(partialPath)) {
-        fs.mkdirSync(partialPath);
-      }
-    });
+    dir.split(path.sep).forEach((part, index) = > {
+      if(
+    !part
+  )
+    return;
+    const partialPath = dir.split(path.sep).slice(0, index + 1).join(path.sep);
+    if (!fs.existsSync(partialPath)) {
+      fs.mkdirSync(partialPath);
+    }
+  })
+    ;
   },
   readFileSync(file) {
     return fs.readFileSync(file, 'utf8');

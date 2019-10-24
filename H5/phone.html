@@ -1,64 +1,68 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="viewport"content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-		<meta charset="utf-8">
-		<title>手机验证码</title>
-		<style type="text/css">
-			input{
-				width: 90%;
-			}
-			#code-btn{
-				width: 100%;
-				height: 2rem;
-				border: none;
-				color: #fff;
-				margin-top: 1rem;
-				background-color: #000;
-			}
-		</style>
-		<script src="js/jquery-3.3.1.js"></script> 
-	</head>
-	<body>
-		<form action="" method="">
-			<input id="phone" type="text" name="phone" placeholder="请输入手机号">
-			<input id="checkCode"  type="text"  name="code" placeholder="请输入验证码">
-			<button id="code-btn">绑定手机号</button>
-		</form>
-	</body>
-	<script type="text/javascript">
-		var code = ""; //接收验证码
-		$('#code-btn').click(function(){
-		  var count = 5;
-		    var phone=$("#phone").val();//手机号码  
-		    var reg_phone = /1\d{10}/;
-		    if(!reg_phone.test(phone)){   //验证手机是否符合格式
-		        alert("填写手机号");
-		        return false;
-		    } 
-		    //开始计时  
-		    $("#code-btn").attr('disabled','disabled');  
-		    $("#code-btn").html("倒计时" + count + "秒");  
-		    var timer = setInterval(function(){  
-		      count--;
-		      $("#code-btn").html("倒计时" + count + "秒"); 
-		      if (count==0) {
-		        clearInterval(timer);
-		        $("#code-btn").attr("disabled",false);//启用按钮  
-		        $("#code-btn").html("重新发送验证码");
-		        code = "";//清除验证码。如果不清除，过时间后，输入收到的验证码依然有效 
-		      }
-		    },1000);
-		
-		    //向后台发送处理数据  
-		    $.ajax({  
-		        type: "POST", //用POST方式传输  
-		        dataType: "text", //数据格式:JSON  
-		        url: '', //目标地址  
-		        data: "phone=" + phone + "&code=" + code,  
-		        error: function (XMLHttpRequest, textStatus, errorThrown) { },  
-		        success: function (msg){ }  
-		    });
-		}); 
-	</script>
+<head>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta charset="utf-8">
+    <title>手机验证码</title>
+    <style type="text/css">
+        input {
+            width: 90%;
+        }
+
+        #code-btn {
+            width: 100%;
+            height: 2rem;
+            border: none;
+            color: #fff;
+            margin-top: 1rem;
+            background-color: #000;
+        }
+    </style>
+    <script src="js/jquery-3.3.1.js"></script>
+</head>
+<body>
+<form action="" method="">
+    <input id="phone" type="text" name="phone" placeholder="请输入手机号">
+    <input id="checkCode" type="text" name="code" placeholder="请输入验证码">
+    <button id="code-btn">绑定手机号</button>
+</form>
+</body>
+<script type="text/javascript">
+    var code = ""; //接收验证码
+    $('#code-btn').click(function () {
+        var count = 5;
+        var phone = $("#phone").val();//手机号码
+        var reg_phone = /1\d{10}/;
+        if (!reg_phone.test(phone)) {   //验证手机是否符合格式
+            alert("填写手机号");
+            return false;
+        }
+        //开始计时
+        $("#code-btn").attr('disabled', 'disabled');
+        $("#code-btn").html("倒计时" + count + "秒");
+        var timer = setInterval(function () {
+            count--;
+            $("#code-btn").html("倒计时" + count + "秒");
+            if (count == 0) {
+                clearInterval(timer);
+                $("#code-btn").attr("disabled", false);//启用按钮
+                $("#code-btn").html("重新发送验证码");
+                code = "";//清除验证码。如果不清除，过时间后，输入收到的验证码依然有效
+            }
+        }, 1000);
+
+        //向后台发送处理数据
+        $.ajax({
+            type: "POST", //用POST方式传输
+            dataType: "text", //数据格式:JSON
+            url: '', //目标地址
+            data: "phone=" + phone + "&code=" + code,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            },
+            success: function (msg) {
+            }
+        });
+    });
+</script>
 </html>

@@ -9,7 +9,7 @@ export default function (translate) {
   }
   const params = swiper.params;
   const translatesDiff = swiper.maxTranslate() - swiper.minTranslate();
-  let { progress, isBeginning, isEnd } = swiper;
+  let {progress, isBeginning, isEnd} = swiper;
   const wasBeginning = isBeginning;
   const wasEnd = isEnd;
   if (translatesDiff === 0) {

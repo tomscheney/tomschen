@@ -8,7 +8,9 @@ const Controller = {
       let maxIndex;
       let minIndex;
       let guess;
-      return (array, val) => {
+      return (array, val) =
+    >
+      {
         minIndex = -1;
         maxIndex = array.length;
         while (maxIndex - minIndex > 1) {
@@ -20,7 +22,8 @@ const Controller = {
           }
         }
         return maxIndex;
-      };
+      }
+      ;
     }());
     this.x = x;
     this.y = y;
@@ -58,6 +61,7 @@ const Controller = {
     const controlled = swiper.controller.control;
     let multiplier;
     let controlledTranslate;
+
     function setControlledTranslate(c) {
       // this will create an Interpolate function based on the snapGrids
       // x is the Grid of the scrolled scroller and y will be the controlled scroller
@@ -84,6 +88,7 @@ const Controller = {
       c.updateActiveIndex();
       c.updateSlidesClasses();
     }
+
     if (Array.isArray(controlled)) {
       for (let i = 0; i < controlled.length; i += 1) {
         if (controlled[i] !== byController && controlled[i] instanceof Swiper) {
@@ -98,24 +103,31 @@ const Controller = {
     const swiper = this;
     const controlled = swiper.controller.control;
     let i;
+
     function setControlledTransition(c) {
       c.setTransition(duration, swiper);
       if (duration !== 0) {
         c.transitionStart();
         if (c.params.autoHeight) {
-          Utils.nextTick(() => {
+          Utils.nextTick(() = > {
             c.updateAutoHeight();
-          });
+        })
+          ;
         }
-        c.$wrapperEl.transitionEnd(() => {
-          if (!controlled) return;
-          if (c.params.loop && swiper.params.controller.by === 'slide') {
-            c.loopFix();
-          }
-          c.transitionEnd();
-        });
+        c.$wrapperEl.transitionEnd(() = > {
+          if(
+        !controlled
+      )
+        return;
+        if (c.params.loop && swiper.params.controller.by === 'slide') {
+          c.loopFix();
+        }
+        c.transitionEnd();
+      })
+        ;
       }
     }
+
     if (Array.isArray(controlled)) {
       for (i = 0; i < controlled.length; i += 1) {
         if (controlled[i] !== byController && controlled[i] instanceof Swiper) {

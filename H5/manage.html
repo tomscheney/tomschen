@@ -1,122 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>地址编写</title>
-<style type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>地址编写</title>
+    <style type="text/css">
 
-/*分别定义HTML中和标记之的距离样式*/
-*{
-    margin: 0;
-    padding: 0;
-}
-/*定义<body>标记样式*/
-body {
-    background: #ffffff;
-    color: #111111;
-    padding-left: 20px;
-}
-/*定义付费内容的样式*/
-form#payment {
-    width: 100%;
-}
-form fieldset{
-	width: 100%;
-	border: none;
-}
-form#payment fieldset:last-of-type { margin-bottom: 0; }
-form#payment legend {
-    color: #384313;
-    font-size: 12px;
-    font-weight: bold;
-    padding-bottom: 10px;
-    text-shadow: 0 1px 1px #c0d576;
-}
-form#payment > fieldset > legend:before {
-    content: "Step " counter(fieldsets) ": ";
-    counter-increment: fieldsets;
-}
+        /*分别定义HTML中和标记之的距离样式*/
+        * {
+            margin: 0;
+            padding: 0;
+        }
 
-form#payment fieldset fieldset legend {
-    color: #111111;
-    font-size: 12px;
-    font-weight: normal;
-    padding-bottom: 0;
-}
+        /*定义<body>标记样式*/
+        body {
+            background: #ffffff;
+            color: #111111;
+            padding-left: 20px;
+        }
 
-form#payment ol li {
-	border-color: #fff;
-    line-height: 50px;
-    height: auto;
-    list-style: none;
-    margin-bottom: 2px;
-	border-bottom: 1px solid;
-}
-form#payment ol ol li {
-    background: none;
-    border: none;
-    float: left;
-}
-form#payment label {
-	float: left;
-    font-size:12px;
-    width: 25%;
-	color: gray;
-}
-form#payment fieldset fieldset label {
-    background: none no-repeat left 50%;
-    line-height: 20px;
-    padding: 0 0 0 30px;
-    width: auto;
-}
-form#payment fieldset fieldset label:hover { cursor: pointer; }
-form#payment input:not([type=radio]), form#payment textarea {
-    background: #ffffff;
-    border: 0;
-    font-size:12px;
-    outline: none;
-    padding: 5px;
-    width: 70%;
-}
-/* form#payment input:not([type=submit]):focus, form#payment textarea:focus {
-    background: #eaeaea;
-    border: #F00 solid 1px;
-} */
-form#payment input[type=radio] {
-    float: left;
-    margin-right: 5px;
-}
-  .selectList{
-		width:90%;
-		margin: 5px auto;
-	}
-	.selectList select{
-		width: 32%;
-		height: 2.5rem;
-		margin-left: 0;
-		/* padding-left: 2%; */
-		font-size: 0.75rem;
-	}
-	select option {
-		font-size:12px;
-	}
-	button{
-	    display: inline-block;
-	    width: 40%;
-	    height: 35px;
-	    color: #fff;
-	    background-color: red;
-	    border: none;
-	    padding: 3px;
-	    font-size: 12px;
-	    margin: 30px 0 0 19px;
-	}
-	#btn-2{
-		background-color: #000;
-	}
-</style>
-<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+        /*定义付费内容的样式*/
+        form#payment {
+            width: 100%;
+        }
+
+        form fieldset {
+            width: 100%;
+            border: none;
+        }
+
+        form#payment fieldset:last-of-type {
+            margin-bottom: 0;
+        }
+
+        form#payment legend {
+            color: #384313;
+            font-size: 12px;
+            font-weight: bold;
+            padding-bottom: 10px;
+            text-shadow: 0 1px 1px #c0d576;
+        }
+
+        form#payment > fieldset > legend:before {
+            content: "Step " counter(fieldsets) ": ";
+            counter-increment: fieldsets;
+        }
+
+        form#payment fieldset fieldset legend {
+            color: #111111;
+            font-size: 12px;
+            font-weight: normal;
+            padding-bottom: 0;
+        }
+
+        form#payment ol li {
+            border-color: #fff;
+            line-height: 50px;
+            height: auto;
+            list-style: none;
+            margin-bottom: 2px;
+            border-bottom: 1px solid;
+        }
+
+        form#payment ol ol li {
+            background: none;
+            border: none;
+            float: left;
+        }
+
+        form#payment label {
+            float: left;
+            font-size: 12px;
+            width: 25%;
+            color: gray;
+        }
+
+        form#payment fieldset fieldset label {
+            background: none no-repeat left 50%;
+            line-height: 20px;
+            padding: 0 0 0 30px;
+            width: auto;
+        }
+
+        form#payment fieldset fieldset label:hover {
+            cursor: pointer;
+        }
+
+        form#payment input:not([type=radio]), form#payment textarea {
+            background: #ffffff;
+            border: 0;
+            font-size: 12px;
+            outline: none;
+            padding: 5px;
+            width: 70%;
+        }
+
+        /* form#payment input:not([type=submit]):focus, form#payment textarea:focus {
+            background: #eaeaea;
+            border: #F00 solid 1px;
+        } */
+        form#payment input[type=radio] {
+            float: left;
+            margin-right: 5px;
+        }
+
+        .selectList {
+            width: 90%;
+            margin: 5px auto;
+        }
+
+        .selectList select {
+            width: 32%;
+            height: 2.5rem;
+            margin-left: 0;
+            /* padding-left: 2%; */
+            font-size: 0.75rem;
+        }
+
+        select option {
+            font-size: 12px;
+        }
+
+        button {
+            display: inline-block;
+            width: 40%;
+            height: 35px;
+            color: #fff;
+            background-color: red;
+            border: none;
+            padding: 3px;
+            font-size: 12px;
+            margin: 30px 0 0 19px;
+        }
+
+        #btn-2 {
+            background-color: #000;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
 </head>
 <body>
 <form id="payment">
@@ -131,37 +152,37 @@ form#payment input[type=radio] {
                 <input id="phone" name="phone" type="tel" placeholder="" required>
             </li>
         </ol>
-		<ol>
-		    <li>
-		        <label for="postcode">邮编(选填)：</label>
-		        <input id="postcode" name="postcode" type="text" required>
-		    </li>
-			<li>
-				<div class="selectList">
-				    <select class="province">
-				        <option>请选择</option>
-				    </select>
-				    <select class="city">
-				        <option>请选择</option>
-				    </select>
-				    <select class="district">
-				        <option>请选择</option>
-				    </select>
-				</div>
-			</li>
-			<li>
-			    <label for="address">详细地址：</label>
-			    <textarea id="address" name="address" rows="1" required></textarea>
-			</li>
-		</ol>
-		<button type="submit" id="btn-1">保存并返回</button>
-		<button onclick="window.open('adress1.html')" type="submit" id="btn-2">返回</button>
+        <ol>
+            <li>
+                <label for="postcode">邮编(选填)：</label>
+                <input id="postcode" name="postcode" type="text" required>
+            </li>
+            <li>
+                <div class="selectList">
+                    <select class="province">
+                        <option>请选择</option>
+                    </select>
+                    <select class="city">
+                        <option>请选择</option>
+                    </select>
+                    <select class="district">
+                        <option>请选择</option>
+                    </select>
+                </div>
+            </li>
+            <li>
+                <label for="address">详细地址：</label>
+                <textarea id="address" name="address" rows="1" required></textarea>
+            </li>
+        </ol>
+        <button type="submit" id="btn-1">保存并返回</button>
+        <button onclick="window.open('adress1.html')" type="submit" id="btn-2">返回</button>
     </fieldset>
 </form>
 </body>
 <script type="text/javascript">
-    $(function(){
-        $(".selectList").each(function(){
+    $(function () {
+        $(".selectList").each(function () {
             var url = "address.json";
             var addressJson;
             var temp_html;
@@ -169,53 +190,54 @@ form#payment input[type=radio] {
             var oCity = $(this).find(".city");
             var oDistrict = $(this).find(".district");
             //初始化省
-            var province = function(){
-                $.each(addressJson,function(i,province){
-                    temp_html+="<option value='"+province.p+"'>"+province.p+"</option>";
+            var province = function () {
+                $.each(addressJson, function (i, province) {
+                    temp_html += "<option value='" + province.p + "'>" + province.p + "</option>";
                 });
                 oProvince.html(temp_html);
                 city();
             };
             //赋值市
-            var city = function(){
-                temp_html = ""; 
+            var city = function () {
+                temp_html = "";
                 var n = oProvince.get(0).selectedIndex;
-                $.each(addressJson[n].c,function(i,city){
-                    temp_html+="<option value='"+city.ct+"'>"+city.ct+"</option>";
+                $.each(addressJson[n].c, function (i, city) {
+                    temp_html += "<option value='" + city.ct + "'>" + city.ct + "</option>";
                 });
                 oCity.html(temp_html);
                 district();
             };
             //赋值县
-            var district = function(){
-                temp_html = ""; 
+            var district = function () {
+                temp_html = "";
                 var m = oProvince.get(0).selectedIndex;
                 var n = oCity.get(0).selectedIndex;
-                if(typeof(addressJson[m].c[n].d) == "undefined"){
-                    oDistrict.css("display","none");
-                }else{
-                    oDistrict.css("display","inline");
-                    $.each(addressJson[m].c[n].d,function(i,district){
-                        temp_html+="<option value='"+district.dt+"'>"+district.dt+"</option>";
+                if (typeof (addressJson[m].c[n].d) == "undefined") {
+                    oDistrict.css("display", "none");
+                } else {
+                    oDistrict.css("display", "inline");
+                    $.each(addressJson[m].c[n].d, function (i, district) {
+                        temp_html += "<option value='" + district.dt + "'>" + district.dt + "</option>";
                     });
                     oDistrict.html(temp_html);
-                };
+                }
+                ;
             };
             //选择省改变市
-            oProvince.change(function(){
+            oProvince.change(function () {
                 city();
             });
             //选择市改变县
-            oCity.change(function(){
+            oCity.change(function () {
                 district();
             });
             //获取json数据
-            $.getJSON(url,function(data){
+            $.getJSON(url, function (data) {
                 addressJson = data;
                 province();
             });
         });
     });
 
-    </script>
+</script>
 </html>

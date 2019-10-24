@@ -14,17 +14,18 @@ export default function () {
   if (breakpoint && swiper.currentBreakpoint !== breakpoint) {
     const breakpointOnlyParams = breakpoint in breakpoints ? breakpoints[breakpoint] : undefined;
     if (breakpointOnlyParams) {
-      ['slidesPerView', 'spaceBetween', 'slidesPerGroup', 'slidesPerColumn'].forEach((param) => {
+      ['slidesPerView', 'spaceBetween', 'slidesPerGroup', 'slidesPerColumn'].forEach((param) = > {
         const paramValue = breakpointOnlyParams[param];
-        if (typeof paramValue === 'undefined') return;
-        if (param === 'slidesPerView' && (paramValue === 'AUTO' || paramValue === 'auto')) {
-          breakpointOnlyParams[param] = 'auto';
-        } else if (param === 'slidesPerView') {
-          breakpointOnlyParams[param] = parseFloat(paramValue);
-        } else {
-          breakpointOnlyParams[param] = parseInt(paramValue, 10);
-        }
-      });
+      if (typeof paramValue === 'undefined') return;
+      if (param === 'slidesPerView' && (paramValue === 'AUTO' || paramValue === 'auto')) {
+        breakpointOnlyParams[param] = 'auto';
+      } else if (param === 'slidesPerView') {
+        breakpointOnlyParams[param] = parseFloat(paramValue);
+      } else {
+        breakpointOnlyParams[param] = parseInt(paramValue, 10);
+      }
+    })
+      ;
     }
 
     const breakpointParams = breakpointOnlyParams || swiper.originalParams;

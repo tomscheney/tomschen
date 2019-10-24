@@ -1,6 +1,7 @@
 export default function () {
   const swiper = this;
   swiper.imagesToLoad = swiper.$el.find('img');
+
   function onReady() {
     if (typeof swiper === 'undefined' || swiper === null || !swiper || swiper.destroyed) return;
     if (swiper.imagesLoaded !== undefined) swiper.imagesLoaded += 1;
@@ -9,6 +10,7 @@ export default function () {
       swiper.emit('imagesReady');
     }
   }
+
   for (let i = 0; i < swiper.imagesToLoad.length; i += 1) {
     const imageEl = swiper.imagesToLoad[i];
     swiper.loadImage(

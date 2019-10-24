@@ -20,7 +20,7 @@ const Cube = {
           $cubeShadowEl = $('<div class="swiper-cube-shadow"></div>');
           $wrapperEl.append($cubeShadowEl);
         }
-        $cubeShadowEl.css({ height: `${swiperWidth}px` });
+        $cubeShadowEl.css({height: `${swiperWidth}px`});
       } else {
         $cubeShadowEl = $el.find('.swiper-cube-shadow');
         if ($cubeShadowEl.length === 0) {
@@ -117,7 +117,7 @@ const Cube = {
   },
   setTransition(duration) {
     const swiper = this;
-    const { $el, slides } = swiper;
+    const {$el, slides} = swiper;
     slides
       .transition(duration)
       .find('.swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left')

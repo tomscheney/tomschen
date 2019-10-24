@@ -1,11 +1,11 @@
-import { window, document } from 'ssr-window';
+import {window, document} from 'ssr-window';
 import $ from '../../utils/dom';
 import Utils from '../../utils/utils';
 
 const Keyboard = {
   handle(event) {
     const swiper = this;
-    const { rtlTranslate: rtl } = swiper;
+    const {rtlTranslate: rtl} = swiper;
     let e = event;
     if (e.originalEvent) e = e.originalEvent; // jquery fix
     const kc = e.keyCode || e.charCode;

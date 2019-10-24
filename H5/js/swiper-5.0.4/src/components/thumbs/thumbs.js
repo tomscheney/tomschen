@@ -4,7 +4,7 @@ import $ from '../../utils/dom';
 const Thumbs = {
   init() {
     const swiper = this;
-    const { thumbs: thumbsParams } = swiper.params;
+    const {thumbs: thumbsParams} = swiper.params;
     const SwiperClass = swiper.constructor;
     if (thumbsParams.swiper instanceof SwiperClass) {
       swiper.thumbs.swiper = thumbsParams.swiper;
@@ -145,7 +145,7 @@ export default {
   on: {
     beforeInit() {
       const swiper = this;
-      const { thumbs } = swiper.params;
+      const {thumbs} = swiper.params;
       if (!thumbs || !thumbs.swiper) return;
       swiper.thumbs.init();
       swiper.thumbs.update(true);

@@ -40,9 +40,13 @@ export default function (event) {
   }
 
   data.lastClickTime = Utils.now();
-  Utils.nextTick(() => {
-    if (!swiper.destroyed) swiper.allowClick = true;
-  });
+  Utils.nextTick(() = > {
+    if(
+  !swiper.destroyed
+)
+  swiper.allowClick = true;
+})
+  ;
 
   if (!data.isTouched || !data.isMoved || !swiper.swipeDirection || touches.diff === 0 || data.currentTranslate === data.startTranslate) {
     data.isTouched = false;
@@ -153,9 +157,10 @@ export default function (event) {
         newPosition = -newPosition;
       }
       if (needsLoopFix) {
-        swiper.once('transitionEnd', () => {
+        swiper.once('transitionEnd', () = > {
           swiper.loopFix();
-        });
+      })
+        ;
       }
       // Fix duration
       if (swiper.velocity !== 0) {
@@ -175,17 +180,25 @@ export default function (event) {
         swiper.setTranslate(newPosition);
         swiper.transitionStart(true, swiper.swipeDirection);
         swiper.animating = true;
-        $wrapperEl.transitionEnd(() => {
-          if (!swiper || swiper.destroyed || !data.allowMomentumBounce) return;
-          swiper.emit('momentumBounce');
+        $wrapperEl.transitionEnd(() = > {
+          if(
+        !swiper || swiper.destroyed || !data.allowMomentumBounce
+      )
+        return;
+        swiper.emit('momentumBounce');
 
-          swiper.setTransition(params.speed);
-          swiper.setTranslate(afterBouncePosition);
-          $wrapperEl.transitionEnd(() => {
-            if (!swiper || swiper.destroyed) return;
-            swiper.transitionEnd();
-          });
-        });
+        swiper.setTransition(params.speed);
+        swiper.setTranslate(afterBouncePosition);
+        $wrapperEl.transitionEnd(() = > {
+          if(
+        !swiper || swiper.destroyed
+      )
+        return;
+        swiper.transitionEnd();
+      })
+        ;
+      })
+        ;
       } else if (swiper.velocity) {
         swiper.updateProgress(newPosition);
         swiper.setTransition(momentumDuration);
@@ -193,10 +206,14 @@ export default function (event) {
         swiper.transitionStart(true, swiper.swipeDirection);
         if (!swiper.animating) {
           swiper.animating = true;
-          $wrapperEl.transitionEnd(() => {
-            if (!swiper || swiper.destroyed) return;
-            swiper.transitionEnd();
-          });
+          $wrapperEl.transitionEnd(() = > {
+            if(
+          !swiper || swiper.destroyed
+        )
+          return;
+          swiper.transitionEnd();
+        })
+          ;
         }
       } else {
         swiper.updateProgress(newPosition);

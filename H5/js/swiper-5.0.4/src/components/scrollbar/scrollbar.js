@@ -1,4 +1,4 @@
-import { document } from 'ssr-window';
+import {document} from 'ssr-window';
 import $ from '../../utils/dom';
 import Utils from '../../utils/utils';
 import Support from '../../utils/support';
@@ -7,7 +7,7 @@ const Scrollbar = {
   setTranslate() {
     const swiper = this;
     if (!swiper.params.scrollbar.el || !swiper.scrollbar.el) return;
-    const { scrollbar, rtlTranslate: rtl, progress } = swiper;
+    const {scrollbar, rtlTranslate: rtl, progress} = swiper;
     const {
       dragSize, trackSize, $dragEl, $el,
     } = scrollbar;
@@ -39,10 +39,13 @@ const Scrollbar = {
     if (params.hide) {
       clearTimeout(swiper.scrollbar.timeout);
       $el[0].style.opacity = 1;
-      swiper.scrollbar.timeout = setTimeout(() => {
+      swiper.scrollbar.timeout = setTimeout(() = > {
         $el[0].style.opacity = 0;
-        $el.transition(400);
-      }, 1000);
+      $el.transition(400);
+    },
+      1000
+    )
+      ;
     }
   },
   setTransition(duration) {
@@ -54,8 +57,8 @@ const Scrollbar = {
     const swiper = this;
     if (!swiper.params.scrollbar.el || !swiper.scrollbar.el) return;
 
-    const { scrollbar } = swiper;
-    const { $dragEl, $el } = scrollbar;
+    const {scrollbar} = swiper;
+    const {$dragEl, $el} = scrollbar;
 
     $dragEl[0].style.width = '';
     $dragEl[0].style.height = '';
@@ -101,7 +104,7 @@ const Scrollbar = {
   },
   setDragPosition(e) {
     const swiper = this;
-    const { scrollbar, rtlTranslate: rtl } = swiper;
+    const {scrollbar, rtlTranslate: rtl} = swiper;
     const {
       $el,
       dragSize,
@@ -127,8 +130,8 @@ const Scrollbar = {
   onDragStart(e) {
     const swiper = this;
     const params = swiper.params.scrollbar;
-    const { scrollbar, $wrapperEl } = swiper;
-    const { $el, $dragEl } = scrollbar;
+    const {scrollbar, $wrapperEl} = swiper;
+    const {$el, $dragEl} = scrollbar;
     swiper.scrollbar.isTouched = true;
     swiper.scrollbar.dragStartPos = (e.target === $dragEl[0] || e.target === $dragEl)
       ? scrollbar.getPointerPosition(e) - e.target.getBoundingClientRect()[swiper.isHorizontal() ? 'left' : 'top'] : null;
@@ -152,8 +155,8 @@ const Scrollbar = {
   },
   onDragMove(e) {
     const swiper = this;
-    const { scrollbar, $wrapperEl } = swiper;
-    const { $el, $dragEl } = scrollbar;
+    const {scrollbar, $wrapperEl} = swiper;
+    const {$el, $dragEl} = scrollbar;
 
     if (!swiper.scrollbar.isTouched) return;
     if (e.preventDefault) e.preventDefault();
@@ -168,8 +171,8 @@ const Scrollbar = {
     const swiper = this;
 
     const params = swiper.params.scrollbar;
-    const { scrollbar, $wrapperEl } = swiper;
-    const { $el } = scrollbar;
+    const {scrollbar, $wrapperEl} = swiper;
+    const {$el} = scrollbar;
 
     if (!swiper.scrollbar.isTouched) return;
     swiper.scrollbar.isTouched = false;
@@ -179,10 +182,13 @@ const Scrollbar = {
     }
     if (params.hide) {
       clearTimeout(swiper.scrollbar.dragTimeout);
-      swiper.scrollbar.dragTimeout = Utils.nextTick(() => {
+      swiper.scrollbar.dragTimeout = Utils.nextTick(() = > {
         $el.css('opacity', 0);
-        $el.transition(400);
-      }, 1000);
+      $el.transition(400);
+    },
+      1000
+    )
+      ;
     }
     swiper.emit('scrollbarDragEnd', e);
     if (params.snapOnRelease) {
@@ -197,8 +203,14 @@ const Scrollbar = {
     } = swiper;
     const $el = scrollbar.$el;
     const target = $el[0];
-    const activeListener = Support.passiveListener && params.passiveListeners ? { passive: false, capture: false } : false;
-    const passiveListener = Support.passiveListener && params.passiveListeners ? { passive: true, capture: false } : false;
+    const activeListener = Support.passiveListener && params.passiveListeners ? {
+      passive: false,
+      capture: false
+    } : false;
+    const passiveListener = Support.passiveListener && params.passiveListeners ? {
+      passive: true,
+      capture: false
+    } : false;
     if (!Support.touch) {
       target.addEventListener(touchEventsDesktop.start, swiper.scrollbar.onDragStart, activeListener);
       document.addEventListener(touchEventsDesktop.move, swiper.scrollbar.onDragMove, activeListener);
@@ -217,8 +229,14 @@ const Scrollbar = {
     } = swiper;
     const $el = scrollbar.$el;
     const target = $el[0];
-    const activeListener = Support.passiveListener && params.passiveListeners ? { passive: false, capture: false } : false;
-    const passiveListener = Support.passiveListener && params.passiveListeners ? { passive: true, capture: false } : false;
+    const activeListener = Support.passiveListener && params.passiveListeners ? {
+      passive: false,
+      capture: false
+    } : false;
+    const passiveListener = Support.passiveListener && params.passiveListeners ? {
+      passive: true,
+      capture: false
+    } : false;
     if (!Support.touch) {
       target.removeEventListener(touchEventsDesktop.start, swiper.scrollbar.onDragStart, activeListener);
       document.removeEventListener(touchEventsDesktop.move, swiper.scrollbar.onDragMove, activeListener);
@@ -232,7 +250,7 @@ const Scrollbar = {
   init() {
     const swiper = this;
     if (!swiper.params.scrollbar.el) return;
-    const { scrollbar, $el: $swiperEl } = swiper;
+    const {scrollbar, $el: $swiperEl} = swiper;
     const params = swiper.params.scrollbar;
 
     let $el = $(params.el);

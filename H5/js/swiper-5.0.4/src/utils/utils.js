@@ -1,20 +1,23 @@
-import { window } from 'ssr-window';
+import {window} from 'ssr-window';
 
 const Utils = {
   deleteProps(obj) {
     const object = obj;
-    Object.keys(object).forEach((key) => {
+    Object.keys(object).forEach((key) = > {
       try {
         object[key] = null;
-      } catch (e) {
-        // no getter for object
-      }
-      try {
-        delete object[key];
-      } catch (e) {
-        // something got wrong
-      }
-    });
+  } catch
+    (e)
+    {
+      // no getter for object
+    }
+    try {
+      delete object[key];
+    } catch (e) {
+      // something got wrong
+    }
+  })
+    ;
   },
   nextTick(callback, delay = 0) {
     return setTimeout(callback, delay);
@@ -32,7 +35,9 @@ const Utils = {
     if (window.WebKitCSSMatrix) {
       curTransform = curStyle.transform || curStyle.webkitTransform;
       if (curTransform.split(',').length > 6) {
-        curTransform = curTransform.split(', ').map((a) => a.replace(',', '.')).join(', ');
+        curTransform = curTransform.split(', ').map((a) = > a.replace(',', '.')
+      ).
+        join(', ');
       }
       // Some old versions of Webkit choke when 'none' is passed; pass
       // empty string instead in this case
@@ -69,7 +74,9 @@ const Utils = {
     let length;
     if (typeof urlToParse === 'string' && urlToParse.length) {
       urlToParse = urlToParse.indexOf('?') > -1 ? urlToParse.replace(/\S*\?/, '') : '';
-      params = urlToParse.split('&').filter((paramsPart) => paramsPart !== '');
+      params = urlToParse.split('&').filter((paramsPart) = > paramsPart !== ''
+    )
+      ;
       length = params.length;
 
       for (i = 0; i < length; i += 1) {
@@ -82,29 +89,33 @@ const Utils = {
   isObject(o) {
     return typeof o === 'object' && o !== null && o.constructor && o.constructor === Object;
   },
-  extend(...args) {
-    const to = Object(args[0]);
-    for (let i = 1; i < args.length; i += 1) {
-      const nextSource = args[i];
-      if (nextSource !== undefined && nextSource !== null) {
-        const keysArray = Object.keys(Object(nextSource));
-        for (let nextIndex = 0, len = keysArray.length; nextIndex < len; nextIndex += 1) {
-          const nextKey = keysArray[nextIndex];
-          const desc = Object.getOwnPropertyDescriptor(nextSource, nextKey);
-          if (desc !== undefined && desc.enumerable) {
-            if (Utils.isObject(to[nextKey]) && Utils.isObject(nextSource[nextKey])) {
-              Utils.extend(to[nextKey], nextSource[nextKey]);
-            } else if (!Utils.isObject(to[nextKey]) && Utils.isObject(nextSource[nextKey])) {
-              to[nextKey] = {};
-              Utils.extend(to[nextKey], nextSource[nextKey]);
-            } else {
-              to[nextKey] = nextSource[nextKey];
-            }
+  extend(...args
+)
+{
+  const to = Object(args[0]);
+  for (let i = 1; i < args.length; i += 1) {
+    const nextSource = args[i];
+    if (nextSource !== undefined && nextSource !== null) {
+      const keysArray = Object.keys(Object(nextSource));
+      for (let nextIndex = 0, len = keysArray.length; nextIndex < len; nextIndex += 1) {
+        const nextKey = keysArray[nextIndex];
+        const desc = Object.getOwnPropertyDescriptor(nextSource, nextKey);
+        if (desc !== undefined && desc.enumerable) {
+          if (Utils.isObject(to[nextKey]) && Utils.isObject(nextSource[nextKey])) {
+            Utils.extend(to[nextKey], nextSource[nextKey]);
+          } else if (!Utils.isObject(to[nextKey]) && Utils.isObject(nextSource[nextKey])) {
+            to[nextKey] = {};
+            Utils.extend(to[nextKey], nextSource[nextKey]);
+          } else {
+            to[nextKey] = nextSource[nextKey];
           }
         }
       }
     }
-    return to;
-  },
-};
+  }
+  return to;
+}
+,
+}
+;
 export default Utils;

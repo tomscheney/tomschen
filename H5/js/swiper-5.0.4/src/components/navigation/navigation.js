@@ -8,7 +8,7 @@ const Navigation = {
     const params = swiper.params.navigation;
 
     if (swiper.params.loop) return;
-    const { $nextEl, $prevEl } = swiper.navigation;
+    const {$nextEl, $prevEl} = swiper.navigation;
 
     if ($prevEl && $prevEl.length > 0) {
       if (swiper.isBeginning) {
@@ -85,7 +85,7 @@ const Navigation = {
   },
   destroy() {
     const swiper = this;
-    const { $nextEl, $prevEl } = swiper.navigation;
+    const {$nextEl, $prevEl} = swiper.navigation;
     if ($nextEl && $nextEl.length) {
       $nextEl.off('click', swiper.navigation.onNextClick);
       $nextEl.removeClass(swiper.params.navigation.disabledClass);
@@ -142,7 +142,7 @@ export default {
     },
     click(e) {
       const swiper = this;
-      const { $nextEl, $prevEl } = swiper.navigation;
+      const {$nextEl, $prevEl} = swiper.navigation;
       if (
         swiper.params.navigation.hideOnClick
         && !$(e.target).is($prevEl)

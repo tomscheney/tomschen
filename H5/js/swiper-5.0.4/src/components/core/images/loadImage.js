@@ -1,10 +1,12 @@
-import { window } from 'ssr-window';
+import {window} from 'ssr-window';
 
 export default function (imageEl, src, srcset, sizes, checkForComplete, callback) {
   let image;
+
   function onReady() {
     if (callback) callback();
   }
+
   if (!imageEl.complete || !checkForComplete) {
     if (src) {
       image = new window.Image();

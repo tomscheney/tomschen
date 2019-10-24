@@ -9,9 +9,10 @@ function base64Encode(file) {
 
 module.exports = {
   install(less, pluginManager, functions) {
-    functions.add('swiperIconsFont', () => {
+    functions.add('swiperIconsFont', () = > {
       const iconsFontBase64 = base64Encode('./src/icons/font/swiper-icons.woff');
-      return iconsFontBase64;
-    });
+    return iconsFontBase64;
+  })
+    ;
   },
 };

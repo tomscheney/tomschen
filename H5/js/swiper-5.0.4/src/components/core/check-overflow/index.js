@@ -1,4 +1,3 @@
-
 function checkOverflow() {
   const swiper = this;
   const wasLocked = swiper.isLocked;
@@ -16,4 +15,4 @@ function checkOverflow() {
   }
 }
 
-export default { checkOverflow };
+export default {checkOverflow};
