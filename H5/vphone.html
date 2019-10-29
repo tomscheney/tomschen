@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- <link rel="stylesheet" href="css/register.css"> -->
+		<!-- <link rel="stylesheet" href="css/sweetalert.css"> -->
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				width: 100%;
+				font-size: 1rem;
+				background-color: #C8C8C8;
+			}
+			/* #register{ width: 100%; height: 100%; } */
+			/* #register .center{ width: 90%; height: 530px; position: relative; top: 50%; transform: translateY(-50%); } */
+			#register .blue{ box-sizing: border-box; margin: 8% auto;height: auto; padding: 22px 100px 0 100px; position: relative; }
+			#register .blue h3{ font-size: 2.5rem; color: red; font-weight: normal;margin: 50px 0 20px 0;}
+			/* #register .blue form{ display: block; } */
+			#register .blue form input{ width: 50%;outline: none; padding: 0 15px; height:5rem;border: none; font-size: 2rem;}
+			#register .blue form input.massage_1{ width: 50%; }
+			#register .blue form input.massage_2{   width: 25%;
+													text-align: center;
+													padding: 0px 1rem 6px;
+													margin-top: 1rem;
+													line-height: 5rem;
+													background: #EEEEEE;
+													color: #333333;
+													}
+			/* #register .blue form input.massage_2[disabled=disabled]{ border-color: #EEEEEE !important; } */
+			 
+			#register .blue form span{ font-size: 2rem; color: #000; width: 30%; height: 36px; line-height: 46px; }
+			#register .blue form p{ height: 30px; line-height: 30px; color: #ed3e3e; font-size: 1.5rem; }
+			#register .blue form input[type=submit]{width: 50%;margin-left: 25%;color: #fff; cursor: pointer; letter-spacing: 2px; background-color: #000000;}
+			 
+			#register .blue a{ font-size: 1rem; color: #000; display: block; text-align: center; line-height: 40px; height: 40px; }
+			#register .blue a:hover{ color: #86C140; }
+			 
+			#register .blue .ye_1{ position: absolute; top: -66px; left: -226px; }
+			#register .blue .ye_2{ position: absolute; bottom: -60px; right: -108px; }
+			#register .blue .ye_3{ position: absolute; top: 336px; left: -336px; }
+
+		</style>
+	</head>
+	<body>
+		<div id="register">
+			<div class="blue">
+				<form action="" id="submit">
+					<h3>为了您的账户安全，请及时绑定手机号</h3>
+					<div>
+						<span>手机号</span>
+						<input type="text" placeholder="请输入您的手机号" class="tel" id="mobile" name="mobile" maxlength="11">
+					</div>
+					<div>
+					<span>验证码</span>
+					<input type="text" placeholder="输入验证码" class="massage_1" name="code" maxlength="6">
+					<input type="text" class="fr massage_2" value="发送验证码" disabled="disabled" id="btn">
+					</div>
+					<!-- <span>密码</span>
+					<input type="password" placeholder="请输入6-16位密码，不能使用空格" maxlength="16" class="pass" name="password">
+					<span>邀请账号</span>
+					<input type="text" placeholder="请输入邀请账号" value="{$invite}" class="code" name="invite">
+					 -->
+					<p></p>
+					<input type="submit" value="绑定手机号" class="submit">
+				</form>
+				<!-- <a href="/login">已有账号？立即登录</a>
+				<img src="/static/index/account/register/images/shang.png" alt="" class="ye_1">
+				<img src="/static/index/account/register/images/xia.png" alt="" class="ye_2">
+				<img src="/static/index/account/register/images/zuo.png" alt="" class="ye_3">
+			</div>
+		</div>-->
+		 
+		<script src="js/jquery-3.3.1.js"></script>
+		<!-- <script src="js/sweetalert.js"></script> -->
+		<!-- <script src="js/register.js"></script> -->
+		<script type="text/javascript">
+			/* yue~~~ */
+			$("#submit").submit(function(){
+				submitFun();
+				return false;
+				console.log(1)
+			});
+			function keyLogin(){
+				e = event ? event :(window.event ? window.event : null); 
+				if(e.keyCode==13){ 
+					submitFun();
+				}
+			}
+			 
+			function submitFun(){
+				var tel=$("#register .blue form input.tel").val();//手机号
+				var massage=$('#register .blue form input.massage_1').val();//短信验证码
+				// var pass=$('#register .blue form input.pass').val();//密码
+				// var code=$('#register .blue form input[name="invite"]').val();//邀请
+			 
+				//手机号验证
+				var numpattern=/^1[3|4|5|7|8|9]\d{9}$/;
+				boolTel=numpattern.test(tel);
+				if(boolTel){
+					$('#register .blue form p').html('');
+				}else{
+					$('#register .blue form p').html('请输入正确格式的手机号');
+					$('#register .blue form input.tel').css('borderColor','#ed3e3e');
+					return false;
+				}
+			 
+				//短信验证码是否为数字
+				var massagepattern=/^\d{4,6}$/;
+				boolMassage=massagepattern.test(massage);
+				if(boolMassage){
+					$('#register .blue form p').html('');
+				}else{
+					$('#register .blue form p').html('请输入正确的验证码');
+					return false;
+				}
+			 
+				//密码
+				var reg =/^\S{6,16}$/;
+				boolPass=reg.test(pass);
+				if(boolPass){
+					$('#register .blue form p').html('');
+				}else{
+					$('#register .blue form p').html("请输入6-16位密码，不能使用空格！");
+					$('#register .blue form input.pass').css('borderColor','#ed3e3e');
+					return false;
+				}
+			 
+				//邀请账号
+				// var kong=/^\s*$/;
+				// Kongcode=kong.test(code);
+				// boolCode=numpattern.test(code);
+				//
+				// if(Kongcode && boolCode) {
+				// 	$('#register .blue form p').html('');
+				// }else if(boolCode){
+				// 	$('#register .blue form p').html('');
+				// }else{
+				// 	$('#register .blue form p').html("请输入正确的邀请手机号");
+				// 	$('#register .blue form input.code').css('borderColor','#ed3e3e');
+				// 	return false;
+				// }
+			 
+				var params=$('#submit').serializeArray();
+				var values={}
+				for(var x in params){
+					values[params[x].name]=params[x].value;
+				}
+			 
+				$.ajax({
+					url:'/account/register',
+					type:'post',
+					dataType:'json',
+					data:values,
+					success:function(result,index){
+						if(result.status==0){
+							swal({
+								title: result.msg,
+								type: "error",
+								timer:1400,
+								showConfirmButton:false
+							});
+						}else{
+							swal({
+								title: result.msg,
+								type: "success",
+								timer:1400,
+								showConfirmButton:false
+							});
+							setTimeout(function(){
+								window.location.href="/login";
+								}, 1450);
+						}
+					},
+					error:function(){
+			 
+					}
+				});
+			 
+				return false;
+			}
+			 
+			 
+			 
+			$("input").focus(function(){
+				$(this).css('borderColor','#43BC60');
+				$('#register .blue form p').html('');
+			});
+			 
+				
+			/* 发送验证码 */
+			var wait=60;
+			function time(o){
+				if(wait==0){
+					$('#btn').css({
+						'background':'#86C140',
+						'color':'#fff'
+					});
+					o.removeAttribute("disabled");
+					$('#register .blue form input.tel').removeAttr('readonly');
+					o.value="发送验证码";
+					wait=60;
+					return;
+				}else{
+					$('#btn').css({
+						'background':'#EEEEEE',
+						'color':'#333333'
+					});
+					o.setAttribute("disabled","disabled");
+					o.value=wait+'秒后可重发';
+					$('#register .blue form input.tel').attr('readonly',true);
+					wait--;
+				}
+			var timer=setTimeout(function(){
+					time(o);
+				},1000);
+			}
+			 
+			 
+			document.getElementById("btn").οnclick=function(){
+				var that=this;
+				time(this);
+				var mobile=$("#mobile").val();
+			 
+					$.ajax({
+						url:"/account/mobile_code",
+						type:"POST",
+						data:{"mobile":mobile},
+						dataType:"json",
+						success:function(result){
+							if(result.status==1){
+			 
+								// time(that);
+							}else{
+			 
+								$('#register .blue form p').html(result.msg);
+								$('#register .blue form input.tel').css('borderColor','#ed3e3e');
+							}
+						},
+						error:function(){
+			 
+						}
+			 
+					});
+			 
+			 
+			}
+			 
+			/* 手机号 */
+			$('#register .blue form input.tel').keyup(function(){
+				var tel=$('#register .blue form input.tel').val();//手机号
+				var telpattern=/^1[3|4|5|7|8|9]\d{9}$/;
+				bool=telpattern.test(tel);
+				if(bool){
+					$('#btn').removeAttr("disabled");
+					$('#btn').css({
+						'background':'#86C140',
+						'color':'#fff'
+					});
+					$('.con .telcon').html('');
+				}else{
+					$('#btn').attr("disabled","disabled");
+					$('#btn').css({
+						'background':'#EEEEEE',
+						'color':'#333333'
+					});
+				}
+			});
+			 
+			$('#register .blue form input[name="invite"]').keyup(function () {
+				var mobile=$(this).val();
+				console.log(mobile);
+				var telpattern=/^1[3|4|5|7|8|9]\d{9}$/;
+				bool=telpattern.test(mobile);
+				if(bool){
+					$(this).css('borderColor','#86C140');
+				}else{
+					$(this).css('borderColor','#ed3e3e');
+				}
+			});
+
+		</script>
+	</body>
+</html>

@@ -1,54 +1,84 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>地址管理</title>
-    <style type="text/css">
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        html, body {
-            width: 100%;
-            height: 100%;
-        }
-
-        body {
-            position: relative;
-        }
-
-        .wrap {
-            width: 100%;
-            height: auto;
-            background-color: #000000;
-        }
-
-        .add {
-            z-index: 1000;
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            border-top: 1px solid gray;
-            text-align: center;
-            width: 100%;
-            height: 3.125rem;
-        }
-
-        .add a {
-            line-height: 3.125rem;
-            text-decoration: none;
-            color: red;
-        }
-    </style>
-</head>
-<body>
-<div class="wrap">
-    <div class="add">
-        <a href="manage.html">+ 新地址</a>
-    </div>
-</div>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" type="text/css" href="js/bootstrap-3.3.7-dist/css/bootstrap.css"/>
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		<title>地址管理</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				width: 100%;
+				height: 100%;
+			}
+			body{
+				position: relative;
+			}
+			.wrap{
+				width: 100%;
+				height: auto;
+				background-color: #000000;
+			}
+			.add{
+				z-index: 1000;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				border-top: 1px solid gray;
+				text-align: center;
+				width: 100%;
+				height: 3.125rem;
+				line-height: 3.125rem;
+				color: red;
+				}
+				.addbody{
+					width: 90%;
+					margin: 0 auto;
+					height: 5rem;
+					overflow: hidden;
+				}
+				.left{
+					width: 90%;
+					float: left;
+				}
+				.right{
+					width: 10%;
+					text-align: center;
+					line-height: 4rem;
+					float: left;
+				}
+		</style>
+	</head>
+	<body>
+		<!-- 例子 -->
+		<div class="addbody">
+			<div class="left">
+				<div class="123">
+					<span class="name">老王啊</span>
+					<span class="num">123****4857</span>
+				</div>
+				<div class="123">
+					<p class="address">北京市丰台区茶缘茶城</p>
+				</div>
+			</div>
+			<div class="right"  onclick="add()">
+				  <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+			</div>
+		</div>
+		<div class="wrap">
+			<div class="add" onclick="add()">+ 新地址</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		function add(){
+			location.href="manage.html?id=2"
+		}
+	</script>
 </html>

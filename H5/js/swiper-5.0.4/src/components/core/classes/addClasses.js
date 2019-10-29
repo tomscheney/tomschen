@@ -36,10 +36,9 @@ export default function () {
     suffixes.push('css-mode');
   }
 
-  suffixes.forEach((suffix) = > {
+  suffixes.forEach((suffix) => {
     classNames.push(params.containerModifierClass + suffix);
-})
-  ;
+  });
 
   $el.addClass(classNames.join(' '));
 }

@@ -19,56 +19,52 @@ const Lazy = {
     }
     if ($images.length === 0) return;
 
-    $images.each((imageIndex, imageEl) = > {
+    $images.each((imageIndex, imageEl) => {
       const $imageEl = $(imageEl);
-    $imageEl.addClass(params.loadingClass);
+      $imageEl.addClass(params.loadingClass);
 
-    const background = $imageEl.attr('data-background');
-    const src = $imageEl.attr('data-src');
-    const srcset = $imageEl.attr('data-srcset');
-    const sizes = $imageEl.attr('data-sizes');
+      const background = $imageEl.attr('data-background');
+      const src = $imageEl.attr('data-src');
+      const srcset = $imageEl.attr('data-srcset');
+      const sizes = $imageEl.attr('data-sizes');
 
-    swiper.loadImage($imageEl[0], (src || background), srcset, sizes, false, () = > {
-      if(typeof swiper === 'undefined' || swiper === null || !swiper || (swiper && !swiper.params) || swiper.destroyed
-  )
-    return;
-    if (background) {
-      $imageEl.css('background-image', `url("${background}")`);
-      $imageEl.removeAttr('data-background');
-    } else {
-      if (srcset) {
-        $imageEl.attr('srcset', srcset);
-        $imageEl.removeAttr('data-srcset');
-      }
-      if (sizes) {
-        $imageEl.attr('sizes', sizes);
-        $imageEl.removeAttr('data-sizes');
-      }
-      if (src) {
-        $imageEl.attr('src', src);
-        $imageEl.removeAttr('data-src');
-      }
-    }
+      swiper.loadImage($imageEl[0], (src || background), srcset, sizes, false, () => {
+        if (typeof swiper === 'undefined' || swiper === null || !swiper || (swiper && !swiper.params) || swiper.destroyed) return;
+        if (background) {
+          $imageEl.css('background-image', `url("${background}")`);
+          $imageEl.removeAttr('data-background');
+        } else {
+          if (srcset) {
+            $imageEl.attr('srcset', srcset);
+            $imageEl.removeAttr('data-srcset');
+          }
+          if (sizes) {
+            $imageEl.attr('sizes', sizes);
+            $imageEl.removeAttr('data-sizes');
+          }
+          if (src) {
+            $imageEl.attr('src', src);
+            $imageEl.removeAttr('data-src');
+          }
+        }
 
-    $imageEl.addClass(params.loadedClass).removeClass(params.loadingClass);
-    $slideEl.find(`.${params.preloaderClass}`).remove();
-    if (swiper.params.loop && loadInDuplicate) {
-      const slideOriginalIndex = $slideEl.attr('data-swiper-slide-index');
-      if ($slideEl.hasClass(swiper.params.slideDuplicateClass)) {
-        const originalSlide = swiper.$wrapperEl.children(`[data-swiper-slide-index="${slideOriginalIndex}"]:not(.${swiper.params.slideDuplicateClass})`);
-        swiper.lazy.loadInSlide(originalSlide.index(), false);
-      } else {
-        const duplicatedSlide = swiper.$wrapperEl.children(`.${swiper.params.slideDuplicateClass}[data-swiper-slide-index="${slideOriginalIndex}"]`);
-        swiper.lazy.loadInSlide(duplicatedSlide.index(), false);
-      }
-    }
-    swiper.emit('lazyImageReady', $slideEl[0], $imageEl[0]);
-  })
-    ;
+        $imageEl.addClass(params.loadedClass).removeClass(params.loadingClass);
+        $slideEl.find(`.${params.preloaderClass}`).remove();
+        if (swiper.params.loop && loadInDuplicate) {
+          const slideOriginalIndex = $slideEl.attr('data-swiper-slide-index');
+          if ($slideEl.hasClass(swiper.params.slideDuplicateClass)) {
+            const originalSlide = swiper.$wrapperEl.children(`[data-swiper-slide-index="${slideOriginalIndex}"]:not(.${swiper.params.slideDuplicateClass})`);
+            swiper.lazy.loadInSlide(originalSlide.index(), false);
+          } else {
+            const duplicatedSlide = swiper.$wrapperEl.children(`.${swiper.params.slideDuplicateClass}[data-swiper-slide-index="${slideOriginalIndex}"]`);
+            swiper.lazy.loadInSlide(duplicatedSlide.index(), false);
+          }
+        }
+        swiper.emit('lazyImageReady', $slideEl[0], $imageEl[0]);
+      });
 
-    swiper.emit('lazyImageLoad', $slideEl[0], $imageEl[0]);
-  })
-    ;
+      swiper.emit('lazyImageLoad', $slideEl[0], $imageEl[0]);
+    });
   },
   load() {
     const swiper = this;
@@ -91,7 +87,6 @@ const Lazy = {
       } else if (slides[index]) return true;
       return false;
     }
-
     function slideIndex(slideEl) {
       if (isVirtual) {
         return $(slideEl).attr('data-swiper-slide-index');
@@ -101,11 +96,10 @@ const Lazy = {
 
     if (!swiper.lazy.initialImageLoaded) swiper.lazy.initialImageLoaded = true;
     if (swiper.params.watchSlidesVisibility) {
-      $wrapperEl.children(`.${swiperParams.slideVisibleClass}`).each((elIndex, slideEl) = > {
+      $wrapperEl.children(`.${swiperParams.slideVisibleClass}`).each((elIndex, slideEl) => {
         const index = isVirtual ? $(slideEl).attr('data-swiper-slide-index') : $(slideEl).index();
-      swiper.lazy.loadInSlide(index);
-    })
-      ;
+        swiper.lazy.loadInSlide(index);
+      });
     } else if (slidesPerView > 1) {
       for (let i = activeIndex; i < activeIndex + slidesPerView; i += 1) {
         if (slideExist(i)) swiper.lazy.loadInSlide(i);

@@ -1,4 +1,4 @@
-import {window, document} from 'ssr-window';
+import { window, document } from 'ssr-window';
 import $ from '../../utils/dom';
 import Utils from '../../utils/utils';
 
@@ -25,7 +25,6 @@ function isEventSupported() {
 
   return isSupported;
 }
-
 const Mousewheel = {
   lastScrollTime: Utils.now(),
   event() {
@@ -179,12 +178,9 @@ const Mousewheel = {
 
       if (swiper.params.freeModeSticky) {
         clearTimeout(swiper.mousewheel.timeout);
-        swiper.mousewheel.timeout = Utils.nextTick(() = > {
+        swiper.mousewheel.timeout = Utils.nextTick(() => {
           swiper.slideToClosest();
-      },
-        300
-      )
-        ;
+        }, 300);
       }
       // Emit event
       swiper.emit('scroll', e);

@@ -4,7 +4,7 @@ export default function (translate = (this && this.translate) || 0) {
   const swiper = this;
   const params = swiper.params;
 
-  const {slides, rtlTranslate: rtl} = swiper;
+  const { slides, rtlTranslate: rtl } = swiper;
 
   if (slides.length === 0) return;
   if (typeof slides[0].swiperSlideOffset === 'undefined') swiper.updateSlidesOffset();
@@ -27,8 +27,8 @@ export default function (translate = (this && this.translate) || 0) {
       const slideBefore = -(offsetCenter - slide.swiperSlideOffset);
       const slideAfter = slideBefore + swiper.slidesSizesGrid[i];
       const isVisible = (slideBefore >= 0 && slideBefore < swiper.size - 1)
-        || (slideAfter > 1 && slideAfter <= swiper.size)
-        || (slideBefore <= 0 && slideAfter >= swiper.size);
+                || (slideAfter > 1 && slideAfter <= swiper.size)
+                || (slideBefore <= 0 && slideAfter >= swiper.size);
       if (isVisible) {
         swiper.visibleSlides.push(slide);
         swiper.visibleSlidesIndexes.push(i);

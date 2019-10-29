@@ -1,4 +1,4 @@
-import {document} from 'ssr-window';
+import { document } from 'ssr-window';
 import Device from '../../../utils/device';
 import Support from '../../../utils/support';
 
@@ -33,15 +33,9 @@ function attachEvents() {
     document.addEventListener(touchEvents.end, swiper.onTouchEnd, false);
   } else {
     if (Support.touch) {
-      const passiveListener = touchEvents.start === 'touchstart' && Support.passiveListener && params.passiveListeners ? {
-        passive: true,
-        capture: false
-      } : false;
+      const passiveListener = touchEvents.start === 'touchstart' && Support.passiveListener && params.passiveListeners ? { passive: true, capture: false } : false;
       el.addEventListener(touchEvents.start, swiper.onTouchStart, passiveListener);
-      el.addEventListener(touchEvents.move, swiper.onTouchMove, Support.passiveListener ? {
-        passive: false,
-        capture
-      } : capture);
+      el.addEventListener(touchEvents.move, swiper.onTouchMove, Support.passiveListener ? { passive: false, capture } : capture);
       el.addEventListener(touchEvents.end, swiper.onTouchEnd, passiveListener);
       if (touchEvents.cancel) {
         el.addEventListener(touchEvents.cancel, swiper.onTouchEnd, passiveListener);
@@ -81,10 +75,7 @@ function detachEvents() {
     document.removeEventListener(touchEvents.end, swiper.onTouchEnd, false);
   } else {
     if (Support.touch) {
-      const passiveListener = touchEvents.start === 'onTouchStart' && Support.passiveListener && params.passiveListeners ? {
-        passive: true,
-        capture: false
-      } : false;
+      const passiveListener = touchEvents.start === 'onTouchStart' && Support.passiveListener && params.passiveListeners ? { passive: true, capture: false } : false;
       el.removeEventListener(touchEvents.start, swiper.onTouchStart, passiveListener);
       el.removeEventListener(touchEvents.move, swiper.onTouchMove, capture);
       el.removeEventListener(touchEvents.end, swiper.onTouchEnd, passiveListener);

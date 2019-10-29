@@ -1,9 +1,9 @@
-import {document} from 'ssr-window';
+import { document } from 'ssr-window';
 import $ from '../../../utils/dom';
 
 export default function () {
   const swiper = this;
-  const {params, $wrapperEl} = swiper;
+  const { params, $wrapperEl } = swiper;
   // Remove duplicated slides
   $wrapperEl.children(`.${params.slideClass}.${params.slideDuplicateClass}`).remove();
 
@@ -30,13 +30,12 @@ export default function () {
 
   const prependSlides = [];
   const appendSlides = [];
-  slides.each((index, el) = > {
+  slides.each((index, el) => {
     const slide = $(el);
-  if (index < swiper.loopedSlides) appendSlides.push(el);
-  if (index < slides.length && index >= slides.length - swiper.loopedSlides) prependSlides.push(el);
-  slide.attr('data-swiper-slide-index', index);
-})
-  ;
+    if (index < swiper.loopedSlides) appendSlides.push(el);
+    if (index < slides.length && index >= slides.length - swiper.loopedSlides) prependSlides.push(el);
+    slide.attr('data-swiper-slide-index', index);
+  });
   for (let i = 0; i < appendSlides.length; i += 1) {
     $wrapperEl.append($(appendSlides[i].cloneNode(true)).addClass(params.slideDuplicateClass));
   }

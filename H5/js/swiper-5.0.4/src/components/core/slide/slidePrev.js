@@ -12,30 +12,20 @@ export default function (speed = this.params.speed, runCallbacks = true, interna
     swiper._clientLeft = swiper.$wrapperEl[0].clientLeft;
   }
   const translate = rtlTranslate ? swiper.translate : -swiper.translate;
-
   function normalize(val) {
     if (val < 0) return -Math.floor(Math.abs(val));
     return Math.floor(val);
   }
-
   const normalizedTranslate = normalize(translate);
-  const normalizedSnapGrid = snapGrid.map((val) = > normalize(val)
-)
-  ;
-  const normalizedSlidesGrid = slidesGrid.map((val) = > normalize(val)
-)
-  ;
+  const normalizedSnapGrid = snapGrid.map((val) => normalize(val));
+  const normalizedSlidesGrid = slidesGrid.map((val) => normalize(val));
 
   const currentSnap = snapGrid[normalizedSnapGrid.indexOf(normalizedTranslate)];
   let prevSnap = snapGrid[normalizedSnapGrid.indexOf(normalizedTranslate) - 1];
   if (typeof prevSnap === 'undefined' && params.cssMode) {
-    snapGrid.forEach((snap) = > {
-      if(
-    !prevSnap && normalizedTranslate >= snap
-  )
-    prevSnap = snap;
-  })
-    ;
+    snapGrid.forEach((snap) => {
+      if (!prevSnap && normalizedTranslate >= snap) prevSnap = snap;
+    });
   }
   let prevIndex;
   if (typeof prevSnap !== 'undefined') {

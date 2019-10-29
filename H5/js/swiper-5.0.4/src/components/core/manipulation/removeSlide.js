@@ -2,7 +2,7 @@ import Support from '../../../utils/support';
 
 export default function (slidesIndexes) {
   const swiper = this;
-  const {params, $wrapperEl, activeIndex} = swiper;
+  const { params, $wrapperEl, activeIndex } = swiper;
 
   let activeIndexBuffer = activeIndex;
   if (params.loop) {

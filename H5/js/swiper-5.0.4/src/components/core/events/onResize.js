@@ -1,7 +1,7 @@
 export default function () {
   const swiper = this;
 
-  const {params, el} = swiper;
+  const { params, el } = swiper;
 
   if (el && el.offsetWidth === 0) return;
 
@@ -11,7 +11,7 @@ export default function () {
   }
 
   // Save locks
-  const {allowSlideNext, allowSlidePrev, snapGrid} = swiper;
+  const { allowSlideNext, allowSlidePrev, snapGrid } = swiper;
 
   // Disable locks on resize
   swiper.allowSlideNext = true;

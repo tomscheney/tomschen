@@ -81,9 +81,8 @@ const Methods = {
   styles,
 };
 
-Object.keys(Methods).forEach((methodName) = > {
+Object.keys(Methods).forEach((methodName) => {
   $.fn[methodName] = $.fn[methodName] || Methods[methodName];
-})
-;
+});
 
 export default $;

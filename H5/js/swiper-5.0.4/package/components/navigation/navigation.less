@@ -4,7 +4,6 @@
   --swiper-navigation-color: var(--swiper-theme-color);
   */
 }
-
 .swiper-button-prev, .swiper-button-next {
   position: absolute;
   top: 50%;
@@ -17,39 +16,32 @@
   align-items: center;
   justify-content: center;
   color: var(--swiper-navigation-color, var(--swiper-theme-color));
-
   &.swiper-button-disabled {
     opacity: 0.35;
     cursor: auto;
     pointer-events: none;
   }
-
   &:after {
     font-family: swiper-icons;
     font-size: var(--swiper-navigation-size);
   }
 }
-
 .swiper-button-prev,
 .swiper-container-rtl .swiper-button-next {
   &:after {
     content: 'prev';
   }
-
   left: 10px;
   right: auto;
 }
-
 .swiper-button-next,
 .swiper-container-rtl .swiper-button-prev {
   &:after {
     content: 'next';
   }
-
   right: 10px;
   left: auto;
 }
-
 .navigation-color-loop({
   .swiper-button-prev,
   .swiper-button-next {

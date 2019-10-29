@@ -1,5 +1,5 @@
-/*ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½Ê½t*/
-*, ::before, ::after {
+/*ÖØÖÃÄ¬ÈÏÑùÊ½t*/
+*,::before,::after{
     margin: 0;
     padding: 0;
     -webkit-box-sizing: border-box;
@@ -8,63 +8,55 @@
     -ms-box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
 }
-
-body {
+body{
     font-size: 14px;
     min-width: 320px;
 }
-
-ol, ul {
+ol,ul{
     list-style: none;
 }
 
-a {
+a{
     text-decoration: none;
     color: #333333;
 }
-
-a:hover {
+a:hover{
     color: #333333;
 }
-
 /* textarea,input{
     outline:none;
     border:none;
     -webkit-appearance: none;
 } */
 
-/*ï¿½ï¿½ï¿½ï¿½*/
-.f_left {
+/*¹«ÓÃ*/
+.f_left{
     float: left;
 }
-
-.f_right {
+.f_right{
     float: right;
 }
-
 .clearfix::before,
-.clearfix::after {
+.clearfix::after{
     content: "";
     display: block;
     line-height: 0;
     visibility: hidden;
-    clear: both;
+    clear:both;
     height: 0;
 }
-
-.m_r10 {
+.m_r10{
     margin-right: 10px;
 }
-
-.ml10 {
+.ml10{
     margin-left: 10px;
 
 }
 
 
-/*ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½*/
-[class^='icon_'], [class*=' icon_'] {
-    background-image: url("../images/sprites.png");
+/*¾«ÁéÍ¼±ê*/
+[class^='icon_'],[class*=' icon_']{
+    background-image:url("../images/sprites.png");
     background-size: 200px 200px;
 }
 

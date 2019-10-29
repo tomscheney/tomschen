@@ -1,6 +1,6 @@
 export default function (runCallbacks = true, direction) {
   const swiper = this;
-  const {activeIndex, previousIndex, params} = swiper;
+  const { activeIndex, previousIndex, params } = swiper;
   swiper.animating = false;
   if (params.cssMode) return;
   swiper.setTransition(0);

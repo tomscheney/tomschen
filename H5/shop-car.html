@@ -1,106 +1,101 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
-    <!--  <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>购物车</title>
-     
-    <meta name="format-detection" content="telephone=no"/>
-     
-    <meta name="renderer" content="webkit">
-    <meta name="description" content="">
-     
-    <meta name="keywords" content="">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/jd_cart.css">
+<meta charset="UTF-8">
+<!--  <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+<meta name="viewport"content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>购物车</title>
+ <meta name="format-detection" content="telephone=no" />
+ <meta name="renderer" content="webkit">
+ <meta name="description" content="">
+ <meta name="keywords" content="">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/jd_cart.css">
 </head>
 <body>
 <!--顶部通栏-->
-<header class="jd_topBar">
-    <!-- <a href="#" class="icon_back"></a> -->
-    <h3>购物车</h3>
-    <!-- <a href="#"class="icon_menu"></a> -->
-</header>
+   <header class="jd_topBar">
+        <!-- <a href="#" class="icon_back"></a> -->
+        <h3>购物车</h3>
+        <!-- <a href="#"class="icon_menu"></a> -->
+    </header>
 
 
 <!--安全提示-->
 <div class="safety-tip">
-    <p class="fadeInDown animated">您正在安全购物环境中，请放心购物</p>
+   <p class="fadeInDown animated">您正在安全购物环境中，请放心购物</p>
 </div>
 
 <!--店铺-->
 <div class="jd_shop">
-    <div class="jd_shop_con one-shop">
-        <!-- 单个商品 -->
-        <div class="product one-goods">
-            <div class="check_box goods-msg">
-                <label for="">
-                       <input type="checkbox" class="goods-check GoodsCheck">
-                      </label>
-            </div>
-            <div class="shop_info clearfix">
-                <a href="#" class="img_box f_left">
-                    <img src="img/gushu%20(2).JPG" alt="">
-                </a>
-                <div class="info_box">
-                    <a class="p_name" href="#">芷贤斋 小心肝小青柑 产地福建福建</a>
-                    <p class="p_price">单价：￥<span class="shop-total-amount GoodsPrice">9.90</span></p>
-                    <div class="p_opition">
+     <div class="jd_shop_con one-shop">
+		 <!-- 单个商品 -->
+         <div class="product one-goods">
+             <div class="check_box goods-msg">
+               <label for=""> 
+			    <input type="checkbox" class="goods-check GoodsCheck"> 
+			   </label>
+             </div>
+             <div class="shop_info clearfix">
+                 <a href="#" class="img_box f_left">
+					 <img src="img/gushu%20(2).JPG" alt="">
+				 </a>
+                 <div class="info_box">
+                     <a class="p_name" href="#">芷贤斋 小心肝小青柑 产地福建福建</a>
+					 <p class="p_price">单价：￥<span class="shop-total-amount GoodsPrice">9.90</span></p>
+                     <div class="p_opition">
                         <div class="change_num f_left">
                             <button type="button" class="minus">-</button>
-                            <input type="text" class="am-num-text" value="1"/>
-                            <button type="button" class="plus">+</button>
+                            <input type="text" class="am-num-text" value="1" /> 
+                            <button type="button" class="plus">+</button> 
                         </div>
                         <div class="delete_box f_right">
                             <span class="delete_up"></span>
                             <span class="delete_down"></span>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- 单个商品 -->
-        <div class="product one-goods">
-            <div class="check_box goods-msg">
-                <label for="">
-                       <input type="checkbox" class="goods-check GoodsCheck">
-                      </label>
-            </div>
-            <div class="shop_info clearfix">
-                <a href="#" class="img_box f_left">
-                    <img src="img/gushu%20(2).JPG" alt="">
-                </a>
-                <div class="info_box">
-                    <a class="p_name" href="#">芷贤斋 小心肝小青柑 产地福建福建</a>
-                    <p class="p_price">单价：￥<span class="shop-total-amount GoodsPrice">9.90</span></p>
-                    <div class="p_opition">
-                        <div class="change_num f_left">
-                            <button type="button" class="minus">-</button>
-                            <input type="text" class="am-num-text" value="1"/>
-                            <button type="button" class="plus">+</button>
-                        </div>
-                        <div class="delete_box f_right">
-                            <span class="delete_up"></span>
-                            <span class="delete_down"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- 店铺合计 -->
-         
-        <div class="shop-total total shopping-car pay">
-              <label for="checkAll" class="checkAll">
-              <input id="checkAll" type="checkbox" class="goods-check ShopCheck">全选</label>
-              <p class="allprice pay-money">合计：￥<span class="shop-total-amount ShopTotal">0</span></p>
-             <a href="adress.html" id='btn-car3'>结算</a>
-        </div>
-    </div>
-</div>
-</div>
+                     </div>
+                 </div>
+             </div>
+		</div>
+		<!-- 单个商品 -->
+		 <div class="product one-goods">
+		     <div class="check_box goods-msg">
+		       <label for=""> 
+			    <input type="checkbox" class="goods-check GoodsCheck"> 
+			   </label>
+		     </div>
+		     <div class="shop_info clearfix">
+		         <a href="#" class="img_box f_left">
+					 <img src="img/gushu%20(2).JPG" alt="">
+				 </a>
+		         <div class="info_box">
+		             <a class="p_name" href="#">芷贤斋 小心肝小青柑 产地福建福建</a>
+					 <p class="p_price">单价：￥<span class="shop-total-amount GoodsPrice">9.90</span></p>
+		             <div class="p_opition">
+		                <div class="change_num f_left">
+		                    <button type="button" class="minus">-</button>
+		                    <input type="text" class="am-num-text" value="1" /> 
+		                    <button type="button" class="plus">+</button> 
+		                </div>
+		                <div class="delete_box f_right">
+		                    <span class="delete_up"></span>
+		                    <span class="delete_down"></span>
+		                </div>
+		             </div>
+		         </div>
+		     </div>
+		</div>
+			 <!-- 店铺合计 -->
+			  <div class="shop-total total shopping-car pay"> 
+			   <label for="checkAll" class="checkAll"> 
+			   <input id="checkAll" type="checkbox" class="goods-check ShopCheck">全选</label> 
+			   <p class="allprice pay-money">合计：￥<span class="shop-total-amount ShopTotal">0</span></p> 
+			  <a href="adress.html" id='btn-car3'>结算</a>
+			 </div>
+         </div>
+     </div>
+ </div>
 
 <div class="jd_win">
     <div class="jd_win_box">
@@ -110,19 +105,44 @@
             <a href="#" class="submit f_right">确定</a>
         </div>
     </div>
-    <!-- 总计 -->
-     
-    <div class="all-total shopping-car">
-         <label for="">
-          <input type="checkbox" class="goods-check" id="AllCheck">全选 </label>
-         <p>总价合计：￥<span class="shop-total-amount" id="AllTotal">0</span></p>
-        <a href="../adress.html" id='btn-car3'>结算</a>
-         
-    </div>
-
+	<!-- 总计 -->
+	 <div class="all-total shopping-car"> 
+	 <label for=""> 
+	  <input type="checkbox" class="goods-check" id="AllCheck">全选 </label> 
+	 <p>总价合计：￥<span class="shop-total-amount" id="AllTotal">0</span></p> 
+	<a href="../adress.html" id='btn-car3'>结算</a>
+	 </div> 
+	
 </div>
-<script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-2.2.0.min.js"></script> 
 <script src="js/cartjs.js"></script>
-
+<script>
+	console.log(window.location.href)
+	let str = window.location.href.split("?")
+	console.log(str[1])
+	let str1 = str[1].split("=")
+	// console.log(str1[1])
+	var params = {
+		dataList:[
+			{
+				title:'111',
+				price: '120'
+			},
+			{
+				title:'111',
+				price: '120'
+			},
+			{
+				title:'111',
+				price: '120'
+			}
+		],
+		// dafasfa:'ajsdkldjskljskl'
+	}
+	
+	for (let item of params.dataList) {
+		$('.jd_shop_con').html("<div class='123'>"+ params.dafasfa +"</div>")
+	}
+</script>
 </body>
 </html>

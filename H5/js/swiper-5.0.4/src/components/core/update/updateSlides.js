@@ -1,4 +1,4 @@
-import {window} from 'ssr-window';
+import { window } from 'ssr-window';
 import Utils from '../../../utils/utils';
 
 export default function () {
@@ -51,8 +51,8 @@ export default function () {
   swiper.virtualSize = -spaceBetween;
 
   // reset margins
-  if (rtl) slides.css({marginLeft: '', marginTop: ''});
-  else slides.css({marginRight: '', marginBottom: ''});
+  if (rtl) slides.css({ marginLeft: '', marginTop: '' });
+  else slides.css({ marginRight: '', marginBottom: '' });
 
   let slidesNumberEvenToRows;
   if (params.slidesPerColumn > 1) {
@@ -208,18 +208,18 @@ export default function () {
 
   if (
     rtl && wrongRTL && (params.effect === 'slide' || params.effect === 'coverflow')) {
-    $wrapperEl.css({width: `${swiper.virtualSize + params.spaceBetween}px`});
+    $wrapperEl.css({ width: `${swiper.virtualSize + params.spaceBetween}px` });
   }
   if (params.setWrapperSize) {
-    if (swiper.isHorizontal()) $wrapperEl.css({width: `${swiper.virtualSize + params.spaceBetween}px`});
-    else $wrapperEl.css({height: `${swiper.virtualSize + params.spaceBetween}px`});
+    if (swiper.isHorizontal()) $wrapperEl.css({ width: `${swiper.virtualSize + params.spaceBetween}px` });
+    else $wrapperEl.css({ height: `${swiper.virtualSize + params.spaceBetween}px` });
   }
 
   if (params.slidesPerColumn > 1) {
     swiper.virtualSize = (slideSize + params.spaceBetween) * slidesNumberEvenToRows;
     swiper.virtualSize = Math.ceil(swiper.virtualSize / params.slidesPerColumn) - params.spaceBetween;
-    if (swiper.isHorizontal()) $wrapperEl.css({width: `${swiper.virtualSize + params.spaceBetween}px`});
-    else $wrapperEl.css({height: `${swiper.virtualSize + params.spaceBetween}px`});
+    if (swiper.isHorizontal()) $wrapperEl.css({ width: `${swiper.virtualSize + params.spaceBetween}px` });
+    else $wrapperEl.css({ height: `${swiper.virtualSize + params.spaceBetween}px` });
     if (params.centeredSlides) {
       newSlidesGrid = [];
       for (let i = 0; i < snapGrid.length; i += 1) {
@@ -250,28 +250,25 @@ export default function () {
 
   if (params.spaceBetween !== 0) {
     if (swiper.isHorizontal()) {
-      if (rtl) slides.filter(slidesForMargin).css({marginLeft: `${spaceBetween}px`});
-      else slides.filter(slidesForMargin).css({marginRight: `${spaceBetween}px`});
-    } else slides.filter(slidesForMargin).css({marginBottom: `${spaceBetween}px`});
+      if (rtl) slides.filter(slidesForMargin).css({ marginLeft: `${spaceBetween}px` });
+      else slides.filter(slidesForMargin).css({ marginRight: `${spaceBetween}px` });
+    } else slides.filter(slidesForMargin).css({ marginBottom: `${spaceBetween}px` });
   }
 
   if (params.centerInsufficientSlides) {
     let allSlidesSize = 0;
-    slidesSizesGrid.forEach((slideSizeValue) = > {
+    slidesSizesGrid.forEach((slideSizeValue) => {
       allSlidesSize += slideSizeValue + (params.spaceBetween ? params.spaceBetween : 0);
-  })
-    ;
+    });
     allSlidesSize -= params.spaceBetween;
     if (allSlidesSize < swiperSize) {
       const allSlidesOffset = (swiperSize - allSlidesSize) / 2;
-      snapGrid.forEach((snap, snapIndex) = > {
+      snapGrid.forEach((snap, snapIndex) => {
         snapGrid[snapIndex] = snap - allSlidesOffset;
-    })
-      ;
-      slidesGrid.forEach((snap, snapIndex) = > {
+      });
+      slidesGrid.forEach((snap, snapIndex) => {
         slidesGrid[snapIndex] = snap + allSlidesOffset;
-    })
-      ;
+      });
     }
   }
 

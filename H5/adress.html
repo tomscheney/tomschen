@@ -1,281 +1,311 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="js/swiper-5.0.4/package/js/swiper.min.js"></script>
-    <script src="js/jquery-3.3.1.js"></script>
-    <!-- Link Swiper's CSS -->
-    <link rel="stylesheet" href="js/swiper-5.0.4/package/css/swiper.min.css">
-    <link rel="stylesheet" href="js/bootstrap-3.3.7-dist/css/bootstrap.css">
-    <title>订单确认</title>
-    <style>
-        @font-face {
-            font-family: 'iconfont';
-            src: url('font_family/iconfont.eot');
-            src: url('iconfont.eot?#iefix') format('embedded-opentype'),
-            url('font_family/iconfont.woff2') format('woff2'),
-            url('font_family/iconfont.woff') format('woff'),
-            url('font_family/iconfont.ttf') format('truetype'),
-            url('font_family/iconfont.svg#iconfont') format('svg');
-        }
-
-        .iconfont {
-            font-family: "iconfont" !important;
-            font-size: 8px;
-            font-style: normal;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* 右箭头 */
-        .indicator {
-            width: 5px;
-            height: 10px;
-            float: right;
-            margin-right: 1rem;
-        }
-
-        .i-icon {
-            float: left;
-        }
-
-        .iconfont {
-            font-size: 16px;
-            line-height: 16px;
-            height: auto;
-            background-color: transparent !important;
-        }
-
-        body {
-            width: 100%;
-        }
-
-        /* 分割线 */
-        .hr-1 {
-            width: 90%;
-            margin: 0 auto;
-        }
-
-        .hr-2 {
-            margin: 0;
-            border-top: 7px solid #eee;
-        }
-
-        /* 收货地址 */
-        .adress {
-            width: 90%;
-            margin: 0 auto;
-            color: #000;
-            padding: 1rem 0;
-            overflow: hidden;
-        }
-
-        .commodity {
-            width: 89%;
-            margin: 0 auto;
-            padding: 1rem 0;
-            overflow: hidden;
-        }
-
-        .glyphicon {
-            font-size: 1rem;
-        }
-
-        .word {
-            font-size: 1.5rem;
-        }
-
-        .word1 {
-            font-size: 1.5rem;
-            margin-left: 1rem;
-        }
-
-        .word-gery {
-            color: gray;
-            float: right;
-        }
-
-        .word-name, .amount {
-            width: 90%;
-            margin: 0 auto;
-        }
-
-        .word-name-top {
-            padding-top: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .word-name-top > span:nth-of-type(2) {
-            float: right;
-        }
-
-        .word-name-bottom {
-            padding-bottom: 1rem;
-        }
-
-        .word-name-bottom > span:nth-of-type(1), .word-name-bottom > span:nth-of-type(2) {
-            color: gray;
-            font-size: 1rem;
-        }
-
-        .word-name-bottom > span:nth-of-type(3) {
-            color: red;
-            font-size: 1rem;
-            float: right;
-        }
-
-        /* 商品金额 */
-        .amount {
-            padding: 1rem 0;
-            overflow: hidden;
-        }
-
-        .amount span:nth-of-type(2) {
-            float: right;
-        }
-
-        .form-inline {
-            width: 90%;
-            margin: 0 auto;
-            overflow: hidden;
-            padding: 0.5rem 0;
-        }
-
-        .sr-only {
-            position: static;
-            width: 23%;
-            height: auto;
-            line-height: 3rem;
-            float: left;
-            font-size: 1.5rem;
-        }
-
-        .form-inline .form-control {
-            font-size: 1rem;
-            width: 77%;
-            border: 0;
-            outline: none;
-            float: left;
-            box-shadow: none;
-        }
-
-        .notic {
-            width: 90%;
-            margin: 0 auto;
-        }
-
-        .notic input[type="checkbox"] {
-            border-radius: 0.5rem;
-        }
-
-        /* 支付 */
-        button {
-            outline: none;
-        }
-
-        .shopping-car {
-            left: 0;
-            width: 100%;
-            height: 50px;
-            text-align: center;
-            color: #fff;
-            line-height: 50px;
-            background-color: #fff;
-        }
-
-        .shopping-car > div {
-            width: 100%;
-            height: 100%;
-        }
-
-        .shopping-car, .pay-money, #btn-car3 {
-            border: 0;
-            z-index: 1000;
-            position: fixed;
-            bottom: 0;
-            height: 50px;
-            focus: none;
-        }
-
-        .pay-money {
-            width: 40%;
-            left: 20%;
-            color: red;
-            background-color: #FFFFFF;
-        }
-
-        #btn-car3 {
-            width: 40%;
-            left: 60%;
-            background-color: #fd3a38;
-        }
-    </style>
-</head>
-<body>
-<!-- 收货地址 -->
-<div class="adress">
-    <span class="indicator i-icon"><i class="iconfont">&#xec3f;</i></span>
-    <span class="word">添加收货地址</span>
-    <span class="indicator i-icon1"><i class="iconfont">&#xe641;</i></span>
-</div>
-<!-- 一条没有感情的分割线 -->
-<hr class="hr-2">
-<!-- 包裹-买家留言 -->
-<div class="commodity">
-    <span class="glyphicon glyphicon-record" aria-hidden="true"></span>
-    <span class="word1">包裹1</span>
-    <span class="word word-gery">免邮</span>
-</div>
-<!-- 一条没有感情的分割线 -->
-<hr class="hr-1">
-<div class="word-name">
-    <div class="word-name-top">
-        <span>芷贤斋 小心肝</span>
-        <span>49.9元/份 ×1</span>
-    </div>
-    <div class="word-name-bottom">
-        <span>规格</span>
-        <span>1份</span>
-        <span>不支持退款</span>
-    </div>
-</div>
-<!-- 一条没有感情的分割线 -->
-<hr class="hr-1">
-<!-- 买家留言 -->
-<form class="form-inline">
-    <div class="form-group">
-        <label class="sr-only" for="exampleInputEmail3">买家留言：</label>
-        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="如有特殊配送要求,请在此填写附言">
-    </div>
-</form>
-<!-- 又一条没有感情的分割线 -->
-<hr class="hr-2">
-<!-- 商品金额 -->
-<div class="amount">
-    <span>商品金额</span>
-    <span>49.9元</span>
-</div>
-<!-- 双一条没有感情的分割线 -->
-<hr class="hr-2">
-<!-- 详情 -->
-<div class="notic">
-    <div class="checkbox">
-        <label>
-            <input class="checkbox-list-input" type="checkbox"> 请详阅并知晓退换政策，同意后付款
-        </label>
-        <span class="indicator i-icon2"><i class="iconfont">&#xe641;</i></span>
-    </div>
-</div>
-<!-- 叒一条没有感情的分割线 -->
-<hr class="hr-2">
-<!-- 去支付 -->
-<div class="shopping-car pay">
-    <div>
-        <span class="pay-money">合计：49.9元</span>
-        <button id="btn-car3">去支付</button>
-    </div>
-</div>
-</body>
+	<head>
+		<meta charset="utf-8">
+		    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+		    <script src="js/swiper-5.0.4/package/js/swiper.min.js"></script>
+		    <script src="js/jquery-3.3.1.js"></script> 
+		    <!-- Link Swiper's CSS -->
+		    <link rel="stylesheet" href="js/swiper-5.0.4/package/css/swiper.min.css">
+		    <link rel="stylesheet" href="js/bootstrap-3.3.7-dist/css/bootstrap.css">
+			<title>订单确认</title>
+			<style>
+				@font-face {
+				font-family: 'iconfont';
+				src: url('font_family/iconfont.eot');
+				src: url('iconfont.eot?#iefix') format('embedded-opentype'),
+				url('font_family/iconfont.woff2') format('woff2'),
+				url('font_family/iconfont.woff') format('woff'),
+				url('font_family/iconfont.ttf') format('truetype'),
+				url('font_family/iconfont.svg#iconfont') format('svg');
+				}
+				.iconfont{
+				font-family:"iconfont" !important;
+				font-size:8px;
+				font-style:normal;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+				}
+				/* 右箭头 */
+				.indicator{
+					width: 5px;
+					height: 10px;
+					float: right;
+					margin-right: 1rem;
+				}
+				.i-icon{
+					float: left;
+				}
+				.iconfont{
+					font-size: 16px;
+					line-height: 16px;
+					height: auto;
+					background-color: transparent!important;
+				}
+				body{
+					width: 100%;
+					}
+				/* 分割线 */
+				.hr-1{
+					width: 90%;	
+					margin: 0 auto;
+				}
+				.hr-2{
+					margin: 0;
+					border-top: 7px solid #eee;
+				}
+				/* 收货地址 */
+				.adress{
+					width: 90%;
+					margin: 0 auto;
+					color: #000;
+					padding: 1rem 0;
+					overflow: hidden;
+				}
+				.commodity{
+					width: 89%;
+					margin: 0 auto;
+					padding: 1rem 0;
+					overflow: hidden;
+					}
+				.glyphicon{
+					font-size: 1rem;
+					}
+				.word{
+					font-size: 1.5rem;
+					}
+				.word1{
+					font-size: 1.5rem;
+					margin-left: 1rem;
+				}
+				.word-gery{
+					color: gray;
+					float: right;
+					}
+				.word-name,.amount{
+					width: 90%;
+					margin: 0 auto;
+					}
+				.word-name-top{
+					padding-top: 1rem;
+					font-size: 1.5rem;
+				}
+				.word-name-top>span:nth-of-type(2){
+					float: right;
+				}
+				.word-name-bottom{
+					padding-bottom: 1rem;
+				}
+				.word-name-bottom>span:nth-of-type(1),.word-name-bottom>span:nth-of-type(2){
+					color: gray;
+					font-size: 1rem;
+				}
+				.word-name-bottom>span:nth-of-type(3){
+					color: red;
+					font-size: 1rem;
+					float: right;
+				}
+				/* 商品金额 */
+				.amount{
+					padding: 1rem 0;
+					overflow: hidden;
+				}
+				.amount span:nth-of-type(2){
+					float: right;
+				}
+				.form-inline{
+					/* width: 90%; */
+					/* margin: 0 auto; */
+					overflow: hidden;
+					padding: 0.5rem 0;
+				}
+				.sr-only{
+					position: static;
+					width: 23%;
+					height: auto;
+					line-height: 3rem;
+					float: left;
+					font-size: 1.5rem;
+				}
+				.form-inline .form-control{
+					font-size: 1rem;
+					width: 77%;
+					border: 0;
+					outline: none;
+					float: left;
+					box-shadow: none;
+				}
+				.notic{
+					width: 100%;
+					/* margin: 0 auto; */
+				}
+				.notic input[type="checkbox"]{
+					border-radius: 0.5rem;
+				}
+				/* 支付 */
+				 button{
+				   outline:none;
+				  }
+				.shopping-car{
+					left: 0;
+					width: 100%;
+					height: 50px;
+					text-align: center;
+					color: #fff;
+					line-height: 50px;
+					background-color: #fff;
+				}
+				.shopping-car>div{
+					width: 100%;
+					height: 100%;
+				}
+				.shopping-car,.pay-money,#btn-car3{
+					border: 0;
+					z-index: 1000;
+					position: fixed;
+					bottom: 0;
+					height: 50px;
+					focus: none;
+				}
+				.pay-money{
+					width: 40%;
+					left: 20%;
+					color: red;
+					background-color: #FFFFFF;
+				}
+				#btn-car3{
+					width: 40%;
+					left: 60%;
+					background-color: #fd3a38;
+				}
+				.checkbox {
+				    position: relative;
+				    display: block;
+				    margin: 0 auto;
+				    margin-top: 10px;
+				    margin-bottom: 10px;
+				    
+				}
+				form{
+					width: 100%;
+				}
+				form>div{
+					width: 90%;
+					margin: 0 auto;
+				}
+				form .hr-2{
+					width: 100%;
+					margin-top: 1rem;
+				}
+			</style>
+	</head>
+	<body>
+		<!-- 收货地址 -->
+		<div  onclick="adda()" class="adress"> 
+			<span class="indicator i-icon"><i class="iconfont">&#xec3f;</i></span>
+			<span class="word">添加收货地址</span>
+			<span class="indicator i-icon1"><i class="iconfont">&#xe641;</i></span>
+		</div>
+		<!-- 一条没有感情的分割线 -->
+		<hr class="hr-2">
+		<!-- 包裹-买家留言 -->
+		<div class="commodity">
+			<span class="glyphicon glyphicon-record" aria-hidden="true"></span>
+			<span class="word1">包裹1</span>
+			<span class="word word-gery">免邮</span>
+		</div>
+		<!-- 一条没有感情的分割线 -->
+		<hr class="hr-1">
+		<div class="word-name">
+			<div class="word-name-top">
+				<span>芷贤斋 小心肝</span>
+				<span>49.9元/份 ×1</span>
+			</div>
+			<div class="word-name-bottom">
+				<span>规格</span>
+				<span>1份</span>
+				<span>不支持退款</span>
+			</div>
+		</div>
+		<!-- 一条没有感情的分割线 -->
+		<hr class="hr-1">
+		<!-- 买家留言 -->
+		<form class="form-inline">
+		  <div class="form-group">
+		    <label class="sr-only" for="exampleInputEmail3">买家留言：</label>
+		    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="如有特殊配送要求,请在此填写附言">
+		  </div>
+		</form>
+		<!-- 又一条没有感情的分割线 -->
+		<hr class="hr-2">
+		<!-- 商品金额 -->
+		<div class="amount">
+			<span>商品金额</span>
+			<span>49.9元</span>
+		</div>
+		<!-- 双一条没有感情的分割线 -->
+		<hr class="hr-2">
+		<!-- 详情 -->
+		<div class="notic">
+			 <div class="checkbox">
+				 <!-- //表单在进行提交的前一刻会调用onsubmit事件，这个事件会接受checkInput这个函数的返回值。 -->
+				     <form action="" onsubmit = "return checkInput(this)">
+						<div>
+				         <label>
+				           <input class="checkbox-list-input" name="id" type="checkbox"> 请详阅并知晓退换政策，同意后付款
+				         </label>
+				         <!-- <input type="submit"> -->
+						 <span onclick="ex()" class="indicator i-icon2"><i class="iconfont">&#xe641;</i></span>
+										 </div>
+				<!-- 叒一条没有感情的分割线 -->
+				<hr class="hr-2">
+				<!-- 去支付 -->
+				<div class="shopping-car pay">
+				  <div>
+					<span class="pay-money">合计：49.9元</span>
+					<button onclick="vadd()" type="submit" id="btn-car3">去支付</button>
+				  </div>
+				</div>
+			</form>		
+			</div>
+		</div>
+		
+	</body>
+	<script type="text/javascript"> 
+		function ex(){
+			location.href="exchange.html"
+		}
+		function adda(){
+			location.href="manage.html"
+		}
+	   	 	$(function vadd(){
+	   		 		$("#btn-car3").click(function(){
+	   		 			//获取用户名的值
+	   		 			// var username= $('.checkbox-list-input').val();
+	   		 			// if(username==""){
+	   		 			// 	alert('用户名不能为空');
+	   		 			// 	return ;
+	   		 			// }
+	   		 			
+	   		 			var istrue=false;
+	   		 			var inp=$(".checkbox-list-input");
+	   		 			for(var i=0;i<inp.length;i++){
+	   		 				if(inp.eq(i).prop("checked")){
+	   		 					istrue=true;
+	   		 					break;
+	   		 				}	
+	   		 			}
+	   		 			if(!istrue){
+	   		 				 alert('有参数未选择');
+	   		 				 return;	
+	   		 			}
+						window.open("vphone.html")
+	   		 			alert('验证成功');
+						// window.location.href="http://www.jb51.net"
+						
+	   		 		})
+	   		 	});
+	  
+	</script>
 </html>

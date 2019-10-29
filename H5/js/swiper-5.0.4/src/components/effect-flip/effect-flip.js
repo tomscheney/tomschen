@@ -4,7 +4,7 @@ import Utils from '../../utils/utils';
 const Flip = {
   setTranslate() {
     const swiper = this;
-    const {slides, rtlTranslate: rtl} = swiper;
+    const { slides, rtlTranslate: rtl } = swiper;
     for (let i = 0; i < slides.length; i += 1) {
       const $slideEl = slides.eq(i);
       let progress = $slideEl[0].progress;
@@ -49,7 +49,7 @@ const Flip = {
   },
   setTransition(duration) {
     const swiper = this;
-    const {slides, activeIndex, $wrapperEl} = swiper;
+    const { slides, activeIndex, $wrapperEl } = swiper;
     slides
       .transition(duration)
       .find('.swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left')
