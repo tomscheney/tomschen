@@ -52,7 +52,9 @@ a:hover{
     margin-left: 10px;
 
 }
-
+.jd_shop_con .one-shop{
+	height: auto;
+}
 
 /*¾«ÁéÍ¼±ê*/
 [class^='icon_'],[class*=' icon_']{

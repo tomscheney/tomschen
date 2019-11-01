@@ -114,7 +114,7 @@
 	}
 	.Bright-spot-1{
 		width: 100%;
-		height: auto;
+		height: 120px;
 		margin: 0 auto;
 		overflow: hidden;
 		border-radius: 0.8rem;
@@ -238,6 +238,28 @@
 		border-radius: 50%;
 		display: none;
 	}
+	.jia1{
+		position: absolute;
+		z-index: 1000;
+		width: 15px;
+		top: -15%;
+		left: 50%;
+		height: 5px;
+		color: #000000;
+		animation: myfirst 2s;
+		-webkit-animation: myfirst 2s;
+		display: none;
+	}
+	@keyframes myfirst
+	{
+	    from {top: 10%;left: 45%;opacity: 1;}
+	    to {top: -15%;left: 50%;opacity: 0;}
+	}
+	 @-webkit-keyframes myfirst /* Safari 与 Chrome */
+	{
+	    from {top: 10%;left: 45%;opacity: 1;}
+	    to {top: -15%;left: 50%;opacity: 0;}
+	}
     </style>
 </head>
 <body>
@@ -358,9 +380,9 @@
   <div class="shopping-car">
 	  <div>
 		<button onclick="addCar()" class="123" id="btn-car1"><img src="img/car.png">
-		<span class="yuan"></span><span class="+1">+1</span></button>
-		<button id="btn-car2">加入购物车</button>
-		<button id="btn-car3"><a href="manage.html">立即购买</a></button>
+		<span class="yuan"></span><span class="jia1">+1</span></button>
+		<button onclick="myFunction()" id="btn-car2">加入购物车</button>
+		<button onclick="adCar()" id="btn-car3">立即购买</button>
 	  </div>
   </div>
 </body>
@@ -379,25 +401,44 @@
     }
   })  
 
-   function addCar() {
-	   console.log("dianji le ")
-	   // $.ajax({
-		  //  url: "",
-		  //  type: "post",
-		  //  data:{
-			 //   "id": 123,
-			 //   "niubi": 1326556
-		  //  },
-		  //  success(res): {
-			 //   console.log(res)
-		  //  }
-	   // })
-	   // location.href = "shop-car.html?id=1"
-	   location.href = "shop-car.html"
-   }
-	$("#btn-car2").click(function(){
-	  $(".yuan").show();
-	  $(".+1").animate({left:'250px',display:'block'}); 
-	});
+  $(document).ready(function(){
+	  function addCar() {
+	  	   console.log("dianji le ")
+	  	   // $.ajax({
+	  		  //  url: "",
+	  		  //  type: "post",
+	  		  //  data:{
+	  			 //   "id": 123,
+	  			 //   "niubi": 1326556
+	  		  //  },
+	  		  //  success(res): {
+	  			 //   console.log(res)
+	  		  //  }
+	  	   // })
+	  	   // location.href = "shop-car.html?id=1"
+	  	   location.href = "shop-car.html"
+	  function myFunction() {
+	      setTimeout(function(){ alert("Hello"); }, 3000);
+	  }
+	  $("#btn-car2").click(function(){
+	  setTimeout(
+	  	  $(".yuan").show(); 
+	  	   $(".jia1").fadeToggle(100);
+		    // $(".jia1").fadeIn();
+		    //  $(".jia1").fadeIn("slow");
+		    //  $(".jia1").fadeIn(3000);
+
+			  // $("#div1").fadeOut();
+			  //  $("#div2").fadeOut("slow");
+			  //  $("#div3").fadeOut(3000);
+	  	}), 100 )
+	  	// $("#btn-car2").click(function(){
+	  	//   $(".yuan").show(); 
+	  	//    $(".jia1").fadeOut(100);
+	  	// });
+	  	function adCar(){
+	  		location.href = "adress.html"
+	  	}
+  })
 </script>
 </html>

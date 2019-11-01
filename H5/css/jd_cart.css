@@ -118,9 +118,12 @@ body{
     height: 13px;
     display: inline-block;
 }
-
+.jd_shop_con{
+	border-bottom: 1px solid #ccc;
+}
 .jd_shop .jd_shop_con .product{
-    border-bottom: 1px solid #ccc;
+/* 	padding-bottom: 1rem;
+    border-bottom: 1px solid #ccc; */
     height: 100px;
     position: relative;
 }
@@ -306,6 +309,7 @@ body{
 	    display: -webkit-box;
 	    focus: none;
 	    color: red;	
+		    margin-bottom: 0;
 	}
 	.pay-money{
 		width: 40%;
