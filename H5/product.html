@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="js/jquery-3.3.1.js"></script> 
     <script src="js/swiper-5.0.4/package/js/swiper.min.js"></script>
-    <script src="js/jquery-3.3.1.js"></script> 
     <!-- Link Swiper's CSS -->
      <link rel="stylesheet" href="js/swiper-5.0.4/package/css/swiper.min.css">
      <link rel="stylesheet" href="js/bootstrap-3.3.7-dist/css/bootstrap.css">
@@ -17,6 +17,7 @@
 		}
 		body{
 			position: relative;
+			    padding-bottom: 5rem;
 			}
     /* 轮播图部分 */
     .swiper-container{
@@ -226,6 +227,17 @@
 		left: 60%;
 		background-color: #fd3a38;
 	}
+	.yuan{
+		position: absolute;
+		z-index: 1000;
+		width: 5px;
+		top: 30%;
+		left: 77%;
+		height: 5px;
+		background-color: red;
+		border-radius: 50%;
+		display: none;
+	}
     </style>
 </head>
 <body>
@@ -345,8 +357,9 @@
   <!-- 购物车 -->
   <div class="shopping-car">
 	  <div>
-		<button class="123" id="btn-car1"><img src="img/car.png"></button>
-		<button id="btn-car2" onclick="addCar()">加入购物车</button>
+		<button onclick="addCar()" class="123" id="btn-car1"><img src="img/car.png">
+		<span class="yuan"></span><span class="+1">+1</span></button>
+		<button id="btn-car2">加入购物车</button>
 		<button id="btn-car3"><a href="manage.html">立即购买</a></button>
 	  </div>
   </div>
@@ -365,7 +378,7 @@
       el: '.swiper-pagination'
     }
   })  
-   
+
    function addCar() {
 	   console.log("dianji le ")
 	   // $.ajax({
@@ -382,5 +395,9 @@
 	   // location.href = "shop-car.html?id=1"
 	   location.href = "shop-car.html"
    }
+	$("#btn-car2").click(function(){
+	  $(".yuan").show();
+	  $(".+1").animate({left:'250px',display:'block'}); 
+	});
 </script>
 </html>
