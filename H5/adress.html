@@ -2,15 +2,15 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-		    <script src="js/swiper-5.0.4/package/js/swiper.min.js"></script>
-		    <script src="js/jquery-3.3.1.js"></script> 
-		    <!-- Link Swiper's CSS -->
-		    <link rel="stylesheet" href="js/swiper-5.0.4/package/css/swiper.min.css">
-		    <link rel="stylesheet" href="js/bootstrap-3.3.7-dist/css/bootstrap.css">
-			<title>订单确认</title>
-			<style>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<script src="js/swiper-5.0.4/package/js/swiper.min.js"></script>
+		<script src="js/jquery-3.3.1.js"></script> 
+		<!-- Link Swiper's CSS -->
+		<link rel="stylesheet" href="js/swiper-5.0.4/package/css/swiper.min.css">
+		<link rel="stylesheet" href="js/bootstrap-3.3.7-dist/css/bootstrap.css">
+		<title>订单确认</title>
+		<style>
 				@font-face {
 				font-family: 'iconfont';
 				src: url('font_family/iconfont.eot');
@@ -198,6 +198,44 @@
 					width: 100%;
 					margin-top: 1rem;
 				}
+				.gift{
+					width: 90%;
+					/* height: 7rem; */
+					line-height: 3rem;
+					margin: 0 auto;
+					}
+				.gift>div{
+					width: 100%;
+					height: 4rem;
+				}
+				.vou>span:nth-of-type(1)>img{
+					margin-right: 1rem;
+				}
+				.vou>span:nth-of-type(2){
+					float: right;
+					color: gray;
+				}
+				.vou>span:nth-of-type(2)>img{
+					padding-left: 0.5rem;
+				}
+				.vou>span:nth-of-type(2)>img:nth-of-type(2){
+					display: none;
+				}
+				.inp{
+					display: none;
+				}
+				.inp input{
+					width: 75%;
+					outline: none;
+				}
+				.inp button{
+					width: 20%;
+					background-color: red;
+					border: none;
+					height: 3rem;
+					line-height: 3rem;
+					color: white;
+				}
 			</style>
 	</head>
 	<body>
@@ -228,7 +266,7 @@
 				<span>不支持退款</span>
 			</div>
 		</div>
-		<!-- 一条没有感情的分割线 -->
+		<!-- 又一条没有感情的分割线 -->
 		<hr class="hr-1">
 		<!-- 买家留言 -->
 		<form class="form-inline">
@@ -237,14 +275,27 @@
 		    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="如有特殊配送要求,请在此填写附言">
 		  </div>
 		</form>
-		<!-- 又一条没有感情的分割线 -->
+		<!-- 双一条没有感情的分割线 -->
 		<hr class="hr-2">
 		<!-- 商品金额 -->
 		<div class="amount">
 			<span>商品金额</span>
 			<span>49.9元</span>
 		</div>
-		<!-- 双一条没有感情的分割线 -->
+		<!-- 叒一条没有感情的分割线 -->
+		<hr class="hr-2">
+		<!-- 礼券 -->
+		<div class="gift">
+			<div class="vou" id="liquan">
+				<span><img src="img/gou.png" >礼券</span>
+				<span>暂无可用礼券<img src="img/下箭头.png"><img src="img/上箭头.png"></span>
+			</div>
+			<div class="inp">
+				<input type="text" name="" id="" value="" />
+				<button type="button">兑换</button>
+			</div>
+		</div>
+		<!-- 叕一条没有感情的分割线 -->
 		<hr class="hr-2">
 		<!-- 详情 -->
 		<div class="notic">
@@ -279,7 +330,7 @@
 		function adda(){
 			location.href="manage.html"
 		}
-	   	 	$(function vadd(){
+	   	$(function vadd(){
 	   		 		$("#btn-car3").click(function(){
 	   		 			//获取用户名的值
 	   		 			// var username= $('.checkbox-list-input').val();
@@ -301,11 +352,33 @@
 	   		 				 return;	
 	   		 			}
 						window.open("vphone.html")
-	   		 			alert('验证成功');
+	   		 			// alert('验证成功');
 						// window.location.href="http://www.jb51.net"
 						
 	   		 		})
 	   		 	});
-	  
+	  // wx.openAddress({
+	  //      success: function () { 
+	  //           // 用户成功拉出地址 },
+	  //      cancel: function () { 
+	  //           // 用户取消拉出地址
+	  // }});
+	   $("#liquan").click(function(){
+		   if ($(".vou>span:nth-of-type(2)>img:nth-of-type(1)").is(':hidden')) {
+				$(".vou>span:nth-of-type(2)>img:nth-of-type(1)").show();
+				$(".inp").show();
+				$(".vou>span:nth-of-type(2)>img:nth-of-type(2)").hide();
+
+		   } else{
+				$(".vou>span:nth-of-type(2)>img:nth-of-type(1)").hide();
+				$(".vou>span:nth-of-type(2)>img:nth-of-type(2)").show();
+				$(".inp").hide();
+		   }
+		   // if($('#timo').is(':hidden')){//如果当前隐藏
+		   // 		$('#timo').show();//那么就显示div
+		   // 		}else{//否则
+		   // 		$('#timo').hide();//就隐藏div
+
+		})
 	</script>
 </html>

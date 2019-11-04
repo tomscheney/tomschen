@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<script src="js/jquery-3.3.1.js"></script> 
     <script src="js/swiper-5.0.4/package/js/swiper.min.js"></script>
+	<script src="js/jquery.fly.min.js"></script>
     <!-- Link Swiper's CSS -->
      <link rel="stylesheet" href="js/swiper-5.0.4/package/css/swiper.min.css">
      <link rel="stylesheet" href="js/bootstrap-3.3.7-dist/css/bootstrap.css">
     <title>产品详情页</title>
-  
     <style type="text/css">
 		*{
 			margin: 0;
 		}
 		body{
 			position: relative;
-			    padding-bottom: 5rem;
+			padding-bottom: 5rem;
 			}
     /* 轮播图部分 */
     .swiper-container{
@@ -230,10 +230,10 @@
 	.yuan{
 		position: absolute;
 		z-index: 1000;
-		width: 5px;
-		top: 30%;
-		left: 77%;
-		height: 5px;
+		width: 13px;
+		top: 20%;
+		left: 67%;
+		height: 13px;
 		background-color: red;
 		border-radius: 50%;
 		display: none;
@@ -241,24 +241,33 @@
 	.jia1{
 		position: absolute;
 		z-index: 1000;
-		width: 15px;
+		width: 50px;
 		top: -15%;
 		left: 50%;
 		height: 5px;
-		color: #000000;
+		color: red;
 		animation: myfirst 2s;
 		-webkit-animation: myfirst 2s;
 		display: none;
 	}
 	@keyframes myfirst
 	{
-	    from {top: 10%;left: 45%;opacity: 1;}
-	    to {top: -15%;left: 50%;opacity: 0;}
+	    from {top: 0%;opacity: 1;}
+	    to {top: -15%;opacity: 0;}
 	}
 	 @-webkit-keyframes myfirst /* Safari 与 Chrome */
 	{
-	    from {top: 10%;left: 45%;opacity: 1;}
-	    to {top: -15%;left: 50%;opacity: 0;}
+	    from {top: 0%;opacity: 1;}
+	    to {top: -15%;opacity: 0;}
+	}
+	#num{
+		position: absolute;
+		z-index: 1100;
+		font-size: 0.9rem;
+		top: -18px;
+		left: 20%;
+		color: #fff;
+		display: none;
 	}
     </style>
 </head>
@@ -380,65 +389,73 @@
   <div class="shopping-car">
 	  <div>
 		<button onclick="addCar()" class="123" id="btn-car1"><img src="img/car.png">
-		<span class="yuan"></span><span class="jia1">+1</span></button>
-		<button onclick="myFunction()" id="btn-car2">加入购物车</button>
+		<p class="yuan"><span id="num">0</span></p><span class="jia1">+1</span></button>
+		<button id="btn-car2">加入购物车</button>
 		<button onclick="adCar()" id="btn-car3">立即购买</button>
 	  </div>
   </div>
 </body>
+<script type="text/javascript" src="js/jquery-addShopping.js"></script>
 <script>
+	// var offset = $('.yuan').offset();
    var mySwiper = new Swiper ('.swiper-container', {
     loop: true, // 循环模式选项
     autoplay:true,//等同于以下设置
-  /*autoplay: {
-    delay: 3000,
-    stopOnLastSlide: false,
-    disableOnInteraction: true,
-    },*/
-    // 如果需要分页器
+    // 分页器
     pagination: {
       el: '.swiper-pagination'
     }
   })  
 
   $(document).ready(function(){
-	  function addCar() {
+	  
+	  function myFunction(){
 	  	   console.log("dianji le ")
-	  	   // $.ajax({
-	  		  //  url: "",
-	  		  //  type: "post",
-	  		  //  data:{
-	  			 //   "id": 123,
-	  			 //   "niubi": 1326556
-	  		  //  },
-	  		  //  success(res): {
-	  			 //   console.log(res)
-	  		  //  }
-	  	   // })
+	  	   $.ajax({
+	  		   url: "htttp://www.zhixianzhai.com:8088/getProductDetail",
+	  		   type: "post",
+	  		   data:{
+	  			   // "id": 123,
+	  			   // "niubi": 1326556
+	  		   },
+	  		   success(res){
+	  			   console.log(res)
+	  		   }
+	  	   })
 	  	   // location.href = "shop-car.html?id=1"
 	  	   location.href = "shop-car.html"
-	  function myFunction() {
-	      setTimeout(function(){ alert("Hello"); }, 3000);
-	  }
-	  $("#btn-car2").click(function(){
-	  setTimeout(
-	  	  $(".yuan").show(); 
-	  	   $(".jia1").fadeToggle(100);
-		    // $(".jia1").fadeIn();
-		    //  $(".jia1").fadeIn("slow");
-		    //  $(".jia1").fadeIn(3000);
+		   }
+		   })
+	  // function myFunction() {
+	  //     setTimeout(function(){ alert("Hello"); }, 3000);
+	  // }
+	$("#btn-car2").click(function(){
+		  $(".yuan").show();
+		   $("#num").show();
+		  $(".jia1").show(100);
+		  $(".jia1").show().delay(1000).fadeOut();
+	  
+		})
+	function adCar(){
+			location.href = "adress.html";
+		}
+	function addCar(){
+			location.href = "shop-car.html";
+		}
+		// 点击添加购物车
+		$(function(){
+		   $('#btn-car2').shoping({
+				endElement:".yuan",
+				iconCSS:"",
+				iconImg:"img/l.JPG",
+				endFunction:function(element){
+					$("#num").html(parseInt($("#num").html())+1);
+					console.log(element);
+					return false;
+				}
+			})
+		});
+ 
 
-			  // $("#div1").fadeOut();
-			  //  $("#div2").fadeOut("slow");
-			  //  $("#div3").fadeOut(3000);
-	  	}), 100 )
-	  	// $("#btn-car2").click(function(){
-	  	//   $(".yuan").show(); 
-	  	//    $(".jia1").fadeOut(100);
-	  	// });
-	  	function adCar(){
-	  		location.href = "adress.html"
-	  	}
-  })
 </script>
 </html>

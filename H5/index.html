@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<script src="js/jquery-3.3.1.js"></script> 
+		<script src="js/swiper-5.0.4/package/js/swiper.min.js"></script>
+		<!-- Link Swiper's CSS -->
+		<link rel="stylesheet" href="js/swiper-5.0.4/package/css/swiper.min.css">
+		<link rel="stylesheet" href="js/bootstrap-3.3.7-dist/css/bootstrap.css">
+		<title>首页</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				width: 100%;
+				background-color: #000000;
+			}
+			ul,li{
+				list-style: none;
+			}
+			@font-face {
+			font-family: 'iconfont';
+			src: url('font_family/iconfont.eot');
+			src: url('iconfont.eot?#iefix') format('embedded-opentype'),
+			url('font_family/iconfont.woff2') format('woff2'),
+			url('font_family/iconfont.woff') format('woff'),
+			url('font_family/iconfont.ttf') format('truetype'),
+			url('font_family/iconfont.svg#iconfont') format('svg');
+			}
+			.iconfont{
+			font-family:"iconfont" !important;
+			font-size:8px;
+			font-style:normal;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			}
+			/* 右箭头 */
+			.indicator{
+				width: 5px;
+				height: 10px;
+				float: right;
+				margin-right: 1rem;
+			}
+			.iconfont{
+				font-size: 14px;
+				line-height: 16px;
+				height: auto;
+				background-color: transparent!important;
+			}
+			.banner{
+				width: 90%;
+				margin: 0 auto;
+				color: white;
+				height: 5rem;
+				overflow: hidden;
+			}
+			.banner>div{
+				width: 30%;
+				float: left;
+			}
+			.title{
+				font-size: 2.5rem;
+				margin: 0;
+				padding-top: 0.3rem;
+			}
+			.pinyin{
+				font-size: 0.75rem;
+			}
+			.banner ul{
+				width: 70%;
+				height: 5rem;
+				float: left;
+				line-height: 5rem;
+				overflow: hidden;
+			}
+			.banner ul>li{
+				width: 33%;
+				text-align: center;
+				float: left;
+				line-height: 5rem;
+			}
+			.banner ul>li>a{
+				color: white;
+				text-decoration: none;
+			}
+			/* 轮播图部分 */
+			.swiper-container{
+			  /* 锚点颜色 */
+			  border: 1px solid #fff;
+			  --swiper-theme-color: #fff;
+			}
+			.swiper-slide>img{
+			  width: 100%;
+			  height: auto;
+			}
+			.swiper-container-horizontal{
+				border: none;
+			}
+			.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+			    border: 1px solid #fff;
+			}
+			.swiper-pagination-bullet{
+			  width: 0.625rem;
+			  height: 0.625rem;
+			}
+			/* 精彩推荐 */
+			.Boutique{
+				width: 100%;
+			}
+			.Boutique>ul>li{
+				height: 240px;
+				background: #1a1a1b;
+				position: relative;
+				float: left;
+				width: 90%;
+				margin: 5%;
+				overflow: hidden;
+				display: block;
+			}
+			.Boutique>ul>li>a{
+				width: 100%;
+				height: 100%;
+				display: block;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			.Boutique>ul>li>a>img{
+				margin-left: -219px;
+				margin-top: -120px;
+				position: absolute;
+				width: 100%;
+				left: 65%;
+				top: 60%;
+				z-index: 1;
+			}
+			.Boutique>ul>li>a>.Boutique-1-detail{
+				z-index: 2;
+				position: absolute;
+				left: 0;
+				width: 100%;
+				text-align: center;
+			}
+			.Boutique>ul>li>a h3 {
+				letter-spacing: 3px;
+				font-weight: 500;
+			    font-size: 20px;
+			    color: #ccac82;
+			}
+			.Boutique>ul>li>a p{
+				font-size: 14px;
+				color: #916f53;
+				margin-top: 3px;
+			}
+			.Boutique>ul>li>a p span:first-child {
+			    padding-left: 37%;
+			    height: 18px;
+				font-size: 16px;
+			    display: inline-block;
+			}
+			.Boutique>ul>li>a p .i-icon1{
+				padding-right: 35%;
+			}
+			/* 底部 */
+			.footer{
+				border-top: 1px solid #2d2522;
+				padding-top: 20px;
+				padding-bottom: 20px;
+				font-weight: 700;
+				color: #5f4838;
+				-webkit-font-smoothing: antialiased;
+				font-size: 12px;
+			}
+			.wrapper {
+			    width: 90%;
+			    margin: 0 auto;
+			    height: 100%;
+			    position: relative;
+			}
+			.fl{
+				float: left;
+			}
+			.footer .link a {
+			    color: #5f4838;
+			    text-decoration: none;
+			    vertical-align: middle;
+				line-height: 3rem;
+			}
+			.cut {
+			    height: 12px;
+			    display: inline-block;
+			    width: 1px;
+			    background-color: #3a2f2b;
+			    vertical-align: middle;
+			    margin: 0 7px;
+			}
+			.footer .new {
+				font-size: 20px;
+				text-align: right;
+			}
+			.phone{
+				font-size: 15px;
+				background: url("img/tel.png") no-repeat left center;
+				background-size: 1rem;
+				color: #89674c;
+				font-family: Arial;
+				padding-left: 15px;
+			}
+			.copyright{
+				font-size: 11px;
+			}
+			.copyright em {
+				display: inherit;
+			    font-style: normal;
+			}
+			.copyright>span:nth-of-type(1){
+				margin-left: 0px;
+			}
+			.filing {
+			    font-size: 12px;
+			    text-align: right;
+			    margin-left: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="index-body">
+			<!-- banner标题 -->
+			<div class="banner">
+				<div class="logo">
+					<p class="title">芷贤斋</p>
+					<p class="pinyin">ZHI XIAN ZHAI</p>
+				</div>
+				<ul>
+					<li><a href="#">茶叶</a></li>
+					<li><a href="#">茶具</a></li>
+					<li><a href="#">茶艺培训</a></li>
+				</ul>
+			</div>
+			<!-- 轮播图 -->
+			<div class="swiper-con">
+				<div class="swiper-container">
+				  <div class="swiper-wrapper">
+				      <div class="swiper-slide"><img src="img/gushu%20(1).JPG" alt=""></div>
+				      <div class="swiper-slide"><img src="img/gushu%20(5).JPG" alt=""></div>
+				      <div class="swiper-slide"><img src="img/gushu%20(4).JPG" alt=""></div>
+				  </div>
+				  <div class="swiper-pagination"></div>
+			</div>
+			<!-- 推荐 -->
+			<div class="Recommend">
+				
+			</div>
+		</div>
+			<!-- 精品推荐 -->
+			<div class="Boutique">
+				<ul>
+					<li>
+						<a href="/" class="Boutique-1">
+							<img src="img/001.png" >
+							<div class="Boutique-1-detail">
+								<h3>扛鼎之作</h3>
+								<p><span>只做品质茶</span><span class="indicator i-icon1"><i class="iconfont">&#xe641;</i></span></p>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="/" class="Boutique-1">
+							<img src="img/002.png" >
+							<div class="Boutique-1-detail">
+								<h3>惊艳登场</h3>
+								<p><span>只做品质茶</span><span class="indicator i-icon1"><i class="iconfont">&#xe641;</i></span></p>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="/" class="Boutique-1">
+							<img src="img/001.png" >
+							<div class="Boutique-1-detail">
+								<h3>美好体验</h3>
+								<p><span>只做品质茶</span><span class="indicator i-icon1"><i class="iconfont">&#xe641;</i></span></p>
+							</div>
+						</a>
+					</li>
+				</ul>
+	
+			</div>
+			<!-- 底部 -->
+			<div class="footer">
+				<div class="wrapper">
+					<div class="fl">
+						<div class="link">
+							<a href="#"><img src="img/weibo.png" >官方微博</a>
+							<i class="cut"></i>
+							<a href="#"><img src="img/weixin.png">官方微信</a>
+							<i class="cut"></i>
+							<a href="#">官方公众号</a>
+							<i class="cut"></i>
+							<a href="#"><span class="new">淘宝店铺</span></a>
+						</div>
+						<div class="myphone">
+							<span>联系电话</span>
+							<span class="phone">0415-100505405</span>
+						</div>
+						<div class="copyright">
+							<em>Copyright © 2018 ZHIXIANZHAI. All Rights Reserved.</em>
+							<span class="filing">京ICP备15010357号</span><span class="filing">京ICP证161099号</span><span class="filing">此网站图片仅供参考，产品以实物为准。</span>
+						</div>
+					</div>
+				</div>
+			</div>
+	</body>
+	<script type="text/javascript">
+	var mySwiper = new Swiper ('.swiper-container', {
+	  loop: true, // 循环模式选项
+	  // autoplay:true,//等同于以下设置
+	  effect : 'fade',
+	  autoplay: {
+	    delay: 6000,
+	    stopOnLastSlide: false,
+	    disableOnInteraction: true,
+	    },
+	  // 如果需要分页器
+	  pagination: {
+	    el: '.swiper-pagination'
+	  }
+	}) 
+	</script>
+</html>
