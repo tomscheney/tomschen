@@ -2,7 +2,8 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>手机号验证</title>
 		<!-- <link rel="stylesheet" href="css/register.css"> -->
 		<!-- <link rel="stylesheet" href="css/sweetalert.css"> -->
 		<style type="text/css">
@@ -15,24 +16,18 @@
 				font-size: 1rem;
 				background-color: #C8C8C8;
 			}
-			/* #register{ width: 100%; height: 100%; } */
+			#register{ width: 100%; height: 100%; }
 			/* #register .center{ width: 90%; height: 530px; position: relative; top: 50%; transform: translateY(-50%); } */
-			#register .blue{ box-sizing: border-box; margin: 8% auto;height: auto; padding: 22px 100px 0 100px; position: relative; }
-			#register .blue h3{ font-size: 2.5rem; color: red; font-weight: normal;margin: 50px 0 20px 0;}
+			#register .blue{width: 90%;margin:0 auto; border-box;height: auto;padding: 5% 5% 0 5%;position: relative; }
+			#register .blue h3{ font-size: 1rem; color: red; font-weight: normal;margin: 50px 0 20px 0;}
 			/* #register .blue form{ display: block; } */
-			#register .blue form input{ width: 50%;outline: none; padding: 0 15px; height:5rem;border: none; font-size: 2rem;}
-			#register .blue form input.massage_1{ width: 50%; }
-			#register .blue form input.massage_2{   width: 25%;
-													text-align: center;
-													padding: 0px 1rem 6px;
-													margin-top: 1rem;
-													line-height: 5rem;
-													background: #EEEEEE;
-													color: #333333;
-													}
+			#register .blue form .yanzheng{width: 80%;overflow: hidden;}
+			#register .blue form input{ width: 70%;outline: none;float: left; padding: 0 15px; height:3rem;border: none;margin-bottom: 5px; font-size: 0.75rem;}
+			#register .blue form .yanzheng input{float: left;}
+			#register .blue form .yanzheng .massage_1{ width: 50%;padding: 0 0 0 15px;margin-right: 1%;}
+			#register .blue form .yanzheng .massage_2{ width: 36%;text-align: center;padding: 0px 0.5rem;line-height: 5rem;background: #EEEEEE;color: #333333;}
 			/* #register .blue form input.massage_2[disabled=disabled]{ border-color: #EEEEEE !important; } */
-			 
-			#register .blue form span{ font-size: 2rem; color: #000; width: 30%; height: 36px; line-height: 46px; }
+			#register .blue form span{ font-size: 1rem; color: #000; width: 20%; height: 36px; line-height: 46px;float: left;}
 			#register .blue form p{ height: 30px; line-height: 30px; color: #ed3e3e; font-size: 1.5rem; }
 			#register .blue form input[type=submit]{width: 50%;margin-left: 25%;color: #fff; cursor: pointer; letter-spacing: 2px; background-color: #000000;}
 			 
@@ -42,7 +37,15 @@
 			#register .blue .ye_1{ position: absolute; top: -66px; left: -226px; }
 			#register .blue .ye_2{ position: absolute; bottom: -60px; right: -108px; }
 			#register .blue .ye_3{ position: absolute; top: 336px; left: -336px; }
-
+			#submit{width: 100%;}
+			#submit>div{
+				    width: 90%;
+				    margin: 0 auto;
+				    overflow: hidden;
+			}
+			@media  {
+				
+			}
 		</style>
 	</head>
 	<body>
@@ -56,9 +59,11 @@
 					</div>
 					<div>
 					<span>验证码</span>
-					<input type="text" placeholder="输入验证码" class="massage_1" name="code" maxlength="6">
-					<input type="text" class="fr massage_2" value="发送验证码" disabled="disabled" id="btn">
+					<div class="yanzheng">
+						<input type="text" placeholder="输入验证码" class="massage_1" name="code" maxlength="6">
+						<input type="text" class="fr massage_2" value="发送验证码" disabled="disabled" id="btn">
 					</div>
+				</div>
 					<!-- <span>密码</span>
 					<input type="password" placeholder="请输入6-16位密码，不能使用空格" maxlength="16" class="pass" name="password">
 					<span>邀请账号</span>

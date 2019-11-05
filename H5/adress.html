@@ -55,6 +55,10 @@
 					margin: 0;
 					border-top: 7px solid #eee;
 				}
+				.hr-4{
+					width: 100%;
+					margin: 0 auto;
+				}
 				/* 收货地址 */
 				.adress{
 					width: 90%;
@@ -138,6 +142,8 @@
 				}
 				.notic{
 					width: 100%;
+					height: -webkit-fill-available;
+					height: fill-available;
 					/* margin: 0 auto; */
 				}
 				.notic input[type="checkbox"]{
@@ -208,6 +214,9 @@
 					width: 100%;
 					height: 4rem;
 				}
+				.vou{
+					line-height: 4rem;
+				}
 				.vou>span:nth-of-type(1)>img{
 					margin-right: 1rem;
 				}
@@ -226,6 +235,7 @@
 				}
 				.inp input{
 					width: 75%;
+					border:2px solid #999999;
 					outline: none;
 				}
 				.inp button{
@@ -235,6 +245,42 @@
 					height: 3rem;
 					line-height: 3rem;
 					color: white;
+				}
+				/* 支付方式 */
+				.pay_{
+				    width: 100%;
+				    height: 100%;
+				    overflow-y: hidden;
+				    position: fixed;
+				    z-index: 100;
+				    top: 0;
+				    background: black;
+				    opacity: 0.5;
+				}
+				.pay_content{
+				    width: 80%;
+					border-radius: 10px;
+					height: 150px;
+					position: fixed;
+					z-index: 101;
+					top: 10%;
+					left: 10%;
+					right: 10%;
+					background: #FFFFFF;
+				}
+				.con{
+					width: 90%;
+					margin: 10% auto;
+				}
+				.con>p{
+					text-align: center;
+				}
+				.redpay{
+					color: red;
+					font-size: 30px;
+				}
+				.wei{
+					margin: 3px auto;
 				}
 			</style>
 	</head>
@@ -321,7 +367,21 @@
 			</form>		
 			</div>
 		</div>
-		
+		<!-- 灰底 -->
+		<div class="pay_"></div>
+		<!-- 支付页面 -->
+		<div class="pay_content">
+			<div class="con">
+				<p>支付订单</p>
+				<p class="redpay">￥<span>49.9</span></p>
+				<hr class="hr-4">
+				<div class="wei">
+					<img src="img/微信.png" >
+					<span>微信支付</span>
+				</div>
+				<hr class="hr-4">
+			</div>
+		</div>
 	</body>
 	<script type="text/javascript"> 
 		function ex(){
@@ -364,14 +424,14 @@
 	  //           // 用户取消拉出地址
 	  // }});
 	   $("#liquan").click(function(){
-		   if ($(".vou>span:nth-of-type(2)>img:nth-of-type(1)").is(':hidden')) {
-				$(".vou>span:nth-of-type(2)>img:nth-of-type(1)").show();
+		   if ($(".vou>span:nth-of-type(2)>img:nth-of-type(2)").is(':hidden')) {
+				$(".vou>span:nth-of-type(2)>img:nth-of-type(2)").show();
 				$(".inp").show();
-				$(".vou>span:nth-of-type(2)>img:nth-of-type(2)").hide();
+				$(".vou>span:nth-of-type(2)>img:nth-of-type(1)").hide();
 
 		   } else{
-				$(".vou>span:nth-of-type(2)>img:nth-of-type(1)").hide();
-				$(".vou>span:nth-of-type(2)>img:nth-of-type(2)").show();
+				$(".vou>span:nth-of-type(2)>img:nth-of-type(2)").hide();
+				$(".vou>span:nth-of-type(2)>img:nth-of-type(1)").show();
 				$(".inp").hide();
 		   }
 		   // if($('#timo').is(':hidden')){//如果当前隐藏
